@@ -22,6 +22,9 @@ const connectDB = async () => {
     console.warn(`[MongoDB Warning] Could not connect to MongoDB at ${mongoURI} (${error.message}).`);
     console.warn('[MongoDB Mode] Gracefully falling back to High-Speed In-Memory & JSON Data Store. All features remain fully operational!');
     isConnected = false;
+    try {
+      await mongoose.disconnect();
+    } catch (_) {}
   }
 };
 
