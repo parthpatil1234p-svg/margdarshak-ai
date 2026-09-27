@@ -8,8 +8,7 @@ Problem Statement ID: MISC-01 (Career Path Simulator: From Class 10 to Career)
 Institution: Pimpri Chinchwad College of Engineering (PCCOE), Pune
 
 GitHub Repository Link:
-👉 https://github.com/parthpatil/margdarshak-ai
-(Note: Replace with your exact repository URL)
+👉 https://github.com/parthpatil1234p-svg/margdarshak-ai.git
 
 -------------------------------------------------------------------
 TEAM DETAILS:
