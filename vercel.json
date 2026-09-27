@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api"
+      "destination": "https://margdarshak-ai-backend-auux.onrender.com/api/$1"
     },
     {
       "source": "/(.*)",
