@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MargDarshak AI — Official 1080p Launch Video (HackMatrix 5.0)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #070b14;
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --border: rgba(56, 189, 248, 0.25);
+      --primary: #38bdf8;
+      --accent: #f59e0b;
+      --success: #10b981;
+    }
+    body {
+      background: radial-gradient(circle at 50% 0%, #0f1c30 0%, var(--bg) 100%);
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding-bottom: 3rem;
+    }
+    .video-header {
+      padding: 2rem 0 1.5rem 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+    }
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8), 0 0 40px rgba(56, 189, 248, 0.15);
+      backdrop-filter: blur(16px);
+    }
+    video {
+      width: 100%;
+      border-radius: 0.85rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+      background: #000;
+    }
+    .badge-feature {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--primary);
+      padding: 0.35rem 0.75rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .scene-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.6rem;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .scene-pill:hover, .scene-pill.active {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--primary);
+    }
+    .btn-glow {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+      transition: all 0.2s;
+    }
+    .btn-glow:hover {
+      background: linear-gradient(135deg, #0369a1, #075985);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <div class="video-header">
+    <div class="container">
+      <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+        <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill">HACKMATRIX 5.0</span>
+        <span class="badge-feature"><i class="fa-solid fa-film me-1"></i> OFFICIAL LAUNCH REEL (1080P)</span>
+      </div>
+      <h1 class="fw-bold display-5 mb-1" style="color: #38bdf8;">MargDarshak AI (मार्गदर्शक AI)</h1>
+      <p class="text-secondary lead fs-6">Career Path Simulator: Beyond the Engineering/Medical Binary</p>
+    </div>
+  </div>
+
+  <div class="container" style="max-width: 1100px;">
+    <div class="row g-4">
+      
+      <!-- Video Player Column -->
+      <div class="col-lg-8">
+        <div class="video-card">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <span class="badge bg-danger px-2 py-1"><i class="fa-solid fa-circle fa-beat me-1"></i> 1080p HD</span>
+              <span class="badge bg-dark border border-secondary text-secondary"><i class="fa-solid fa-music me-1"></i> Synth BGM + SFX</span>
+            </div>
+            <a href="/video/margdarshak_launch.mp4" download="MargDarshak_AI_Launch_HackMatrix5.mp4" class="btn btn-sm btn-glow px-3">
+              <i class="fa-solid fa-download me-1"></i> Download MP4 (1080p)
+            </a>
+          </div>
+
+          <!-- HTML5 Video Player -->
+          <video id="launchVideo" controls poster="/video/margdarshak_launch.jpg" preload="auto">
+            <source src="/video/margdarshak_launch.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- Quick Controls Below Video -->
+          <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top border-secondary border-opacity-25 small text-secondary">
+            <span><i class="fa-solid fa-stopwatch me-1 text-warning"></i> Duration: <strong>31 Seconds</strong></span>
+            <span><i class="fa-solid fa-wave-square me-1 text-info"></i> Audio: <strong>Stereo AAC + UI Transitions</strong></span>
+            <span><i class="fa-solid fa-award me-1 text-success"></i> Status: <strong>Production Ready</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scene Bookmarks & Script Column -->
+      <div class="col-lg-4">
+        <div class="video-card h-100 d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="fw-bold mb-3" style="color: #38bdf8;"><i class="fa-solid fa-list-ol me-2"></i> Scene Bookmarks</h5>
+            <div class="d-flex flex-column gap-2" id="sceneList">
+              <div class="scene-pill active" onclick="seekVideo(0)">
+                <div class="d-flex justify-content-between align-items-center">
+                  <strong class="text-white small">01. Hero & The Binary Crisis</strong>
+                  <span class="badge bg-dark text-info">00:00</span>
+                </div>
+                <div class="text-secondary small">43L Student trap & ₹80L debt hook</div>
+              </div>
+
+              <div class="scene-pill" onclick="seekVideo(5)">
+                <div class="d-flex justify-content-between align-items-center">
+                  <strong class="text-white small">02. 1-Click RIASEC Intake</strong>
+                  <span class="badge bg-dark text-info">00:05</span>
+                </div>
+                <div class="text-secondary small">5-Question vocational psychometric radar</div>
+              </div>
+
+              <div class="scene-pill" onclick="seekVideo(10)">
+                <div class="d-flex justify-content-between align-items-center">
+                  <strong class="text-white small">03. 3-Tier Multi-Pathway</strong>
+                  <span class="badge bg-dark text-info">00:10</span>
+                </div>
+                <div class="text-secondary small">Aspirant vs Skill vs 0-Debt Polytechnic</div>
+              </div>
+
+              <div class="scene-pill" onclick="seekVideo(15)">
+                <div class="d-flex justify-content-between align-items-center">
+                  <strong class="text-warning small">04. What-If Pivot (USP)</strong>
+                  <span class="badge bg-dark text-warning">00:15</span>
+                </div>
+                <div class="text-secondary small">NEET Missed: +₹80L & 2 Yrs Saved</div>
+              </div>
+
+              <div class="scene-pill" onclick="seekVideo(21)">
+                <div class="d-flex justify-content-between align-items-center">
+                  <strong class="text-white small">05. Loan ROI & PDF Dossier</strong>
+                  <span class="badge bg-dark text-info">00:21</span>
+                </div>
+                <div class="text-secondary small">DTI Risk Gauge & 1-Click PDF export</div>
+              </div>
+
+              <div class="scene-pill" onclick="seekVideo(26)">
+                <div class="d-flex justify-content-between align-items-center">
+                  <strong class="text-white small">06. Multilingual Voice AI</strong>
+                  <span class="badge bg-dark text-info">00:26</span>
+                </div>
+                <div class="text-secondary small">मराठी • हिंदी • English & UN SDGs 4 & 8</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3 pt-3 border-top border-secondary border-opacity-25 d-grid gap-2">
+            <a href="/pitch.html" class="btn btn-outline-info btn-sm">
+              <i class="fa-solid fa-microphone me-1"></i> Open Live 60s Teleprompter
+            </a>
+            <a href="/" class="btn btn-outline-light btn-sm">
+              <i class="fa-solid fa-arrow-left me-1"></i> Back to Main Portal
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const vid = document.getElementById('launchVideo');
+    const pills = document.querySelectorAll('.scene-pill');
+
+    function seekVideo(seconds) {
+      vid.currentTime = seconds;
+      vid.play();
+    }
+
+    vid.addEventListener('timeupdate', () => {
+      const t = vid.currentTime;
+      let activeIndex = 0;
+      if (t >= 26) activeIndex = 5;
+      else if (t >= 21) activeIndex = 4;
+      else if (t >= 15) activeIndex = 3;
+      else if (t >= 10) activeIndex = 2;
+      else if (t >= 5) activeIndex = 1;
+      else activeIndex = 0;
+
+      pills.forEach((p, i) => {
+        if (i === activeIndex) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MargDarshak AI (मार्गदर्शक AI) - Career Path Simulator: From Class 10 to Career</title>
+  
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Three.js CDN for GetLayers 3D WebGL Canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Chart.js for Loan Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- GetLayers 3D WebGL Canvas Container -->
+  <div id="getlayersContainer" class="getlayers-canvas-container"></div>
+
+  <!-- App Shell: Sidebar + Main Workspace -->
+  <div class="app-shell">
+    
+    <!-- Mobile Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Collapsible Modern SaaS Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <!-- Sidebar Brand Header -->
+      <div class="sidebar-header d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2 overflow-hidden">
+          <div class="brand-icon-box flex-shrink-0">
+            <i class="fa-solid fa-compass-drafting fa-lg"></i>
+          </div>
+          <div class="overflow-hidden">
+            <div class="brand-title text-truncate">MargDarshak AI</div>
+            <div class="small text-muted text-truncate" style="font-size: 0.72rem;">मार्गदर्शक AI • HackMatrix 5.0</div>
+          </div>
+        </div>
+        <button type="button" class="btn-close btn-close-white d-lg-none ms-2" id="sidebarCloseBtn" aria-label="Close"></button>
+      </div>
+
+      <!-- Sidebar Navigation Links -->
+      <nav class="sidebar-nav" id="sidebarNav" role="tablist">
+        <div class="nav-section-label">SIMULATION WORKFLOW</div>
+        
+        <button class="sidebar-link active" id="pills-intake-tab" data-bs-toggle="pill" data-bs-target="#pills-intake" type="button" role="tab" data-section-title="1. Class 10 Intake Profile">
+          <i class="fa-solid fa-clipboard-question"></i>
+          <span data-i18n="tab_intake">1. Class 10 Intake</span>
+        </button>
+
+        <button class="sidebar-link" id="pills-roadmap-tab" data-bs-toggle="pill" data-bs-target="#pills-roadmap" type="button" role="tab" data-section-title="2. Sequential Pathway Maps">
+          <i class="fa-solid fa-route"></i>
+          <span data-i18n="tab_roadmap">2. Career Pathways</span>
+        </button>
+
+        <button class="sidebar-link" id="pills-whatif-tab" data-bs-toggle="pill" data-bs-target="#pills-whatif" type="button" role="tab" data-section-title="3. 'What-If' Scenario Simulator">
+          <i class="fa-solid fa-shuffle"></i>
+          <span data-i18n="tab_whatif">3. What-If Simulator</span>
+        </button>
+
+        <button class="sidebar-link" id="pills-finance-tab" data-bs-toggle="pill" data-bs-target="#pills-finance" type="button" role="tab" data-section-title="4. Loan ROI & Scholarships">
+          <i class="fa-solid fa-calculator"></i>
+          <span data-i18n="tab_finance">4. Loan ROI & Aid</span>
+        </button>
+
+        <button class="sidebar-link" id="pills-matrix-tab" data-bs-toggle="pill" data-bs-target="#pills-matrix" type="button" role="tab" data-section-title="5. Decision Matrix & Dossier">
+          <i class="fa-solid fa-table-columns"></i>
+          <span data-i18n="tab_matrix">5. Decision Matrix</span>
+        </button>
+
+        <div class="nav-section-label mt-3">TOOLS & COUNSELING</div>
+
+        <button type="button" class="sidebar-link" onclick="startPsychometricQuiz()">
+          <i class="fa-solid fa-brain text-info"></i>
+          <span>Aptitude RIASEC Quiz</span>
+        </button>
+
+        <button type="button" class="sidebar-link" onclick="toggleChatWindow()">
+          <i class="fa-solid fa-robot text-warning"></i>
+          <span>AI Career Counselor</span>
+        </button>
+
+        <button type="button" class="sidebar-link" onclick="openSavedRoadmapsModal()">
+          <i class="fa-solid fa-folder-open text-success"></i>
+          <span>Saved Roadmaps</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Status & Footer -->
+      <div class="sidebar-footer">
+        <div class="system-status-chip">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge-status-dot bg-success"></span>
+            <span class="text-light fw-medium">Gemini 2.5 Active</span>
+          </div>
+          <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25">PCCOE</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <div class="app-main-wrapper">
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <!-- Mobile Sidebar Toggle -->
+          <button class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle Navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <!-- Active Breadcrumb -->
+          <div class="section-breadcrumb">
+            <i class="fa-solid fa-layer-group text-primary"></i>
+            <span id="currentSectionTitle">1. Class 10 Intake Profile</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- 1-Click Judge & Demo Personas (Capsule) -->
+          <div class="persona-switcher-bar d-none d-xl-flex">
+            <span class="small text-muted px-2" style="font-size: 0.72rem;">
+              <i class="fa-solid fa-users me-1 text-primary"></i>Demo:
+            </span>
+            <button id="btn_PERSONA_A" class="persona-pill-btn" onclick="loadPersona('PERSONA_A')" title="Aarav: Tech + Bio, Avg Math">
+              <span>👤 Aarav</span>
+            </button>
+            <button id="btn_PERSONA_B" class="persona-pill-btn" onclick="loadPersona('PERSONA_B')" title="Rajesh: ₹4L Budget, Debt-Averse">
+              <span>👨‍👩‍👧 Rajesh</span>
+            </button>
+            <button id="btn_PERSONA_C" class="persona-pill-btn" onclick="loadPersona('PERSONA_C')" title="Ananya: 94%+, AI & Germany">
+              <span>🚀 Ananya</span>
+            </button>
+          </div>
+
+          <!-- Language Switcher Dropdown -->
+          <div class="dropdown">
+            <button class="btn btn-outline-light btn-sm dropdown-toggle rounded-pill px-2 px-sm-3 d-flex align-items-center" type="button" data-bs-toggle="dropdown">
+              <i class="fa-solid fa-language me-1 text-warning"></i>
+              <span id="currentLanguageLabel" class="fw-bold d-none d-sm-inline">English</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-3 p-1">
+              <li><button class="dropdown-item rounded-2 py-1 small lang-option active" data-lang="en" onclick="setLanguage('en')">English</button></li>
+              <li><button class="dropdown-item rounded-2 py-1 small lang-option" data-lang="hi" onclick="setLanguage('hi')">हिंदी (Hindi)</button></li>
+              <li><button class="dropdown-item rounded-2 py-1 small lang-option" data-lang="mr" onclick="setLanguage('mr')">मराठी (Marathi)</button></li>
+            </ul>
+          </div>
+
+          <!-- Auth Account Nav -->
+          <div id="authNavContainer"></div>
+        </div>
+      </header>
+
+      <!-- Main Dynamic Content Workspace -->
+      <main class="app-content">
+        <!-- ===================================================================
+             1. MODERN HERO SECTION WITH VENGEANCE UI GLOWING RAYS
+             =================================================================== -->
+        <section class="hero-banner modern-hero spotlight-card mb-4" id="mainHeroBanner">
+          <div class="hero-content-wrapper">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+              <div class="d-flex align-items-center flex-wrap gap-2">
+                <span class="hero-chip-badge d-inline-flex align-items-center">
+                  <span id="heroProjectIconSlot" class="me-1"></span>
+                  <i class="fa-solid fa-fire-flame-curved text-warning me-1"></i>HackMatrix 5.0 (Kali Yuga) • PCCOE Pune
+                </span>
+                <span class="hero-tag-badge hero-tag-sdg4">
+                  <i class="fa-solid fa-graduation-cap me-1"></i>SDG 4: Quality Education
+                </span>
+                <span class="hero-tag-badge hero-tag-sdg8">
+                  <i class="fa-solid fa-chart-line me-1"></i>SDG 8: Decent Work
+                </span>
+              </div>
+              <!-- Mobile & Tablet Persona Switcher -->
+              <div class="d-flex d-xl-none flex-wrap gap-1">
+                <button class="persona-pill-btn" onclick="loadPersona('PERSONA_A')">👤 Aarav</button>
+                <button class="persona-pill-btn" onclick="loadPersona('PERSONA_B')">👨‍👩‍👧 Rajesh</button>
+                <button class="persona-pill-btn" onclick="loadPersona('PERSONA_C')">🚀 Ananya</button>
+              </div>
+            </div>
+
+            <h1 class="hero-headline" data-i18n="hero_title">
+              From Class 10 to Career: <span class="text-gradient-purple-cyan">Zero-Regret Path Simulator</span>
+            </h1>
+
+            <p class="hero-description" data-i18n="hero_subtitle">
+              Break binary JEE/NEET bias. Discover sequential milestone maps, simulate unexpected drop years with AI reasoning, calculate debt traps, and evaluate high-return career alternatives before committing irreversible years.
+            </p>
+
+            <!-- Hero Action Buttons (21st.dev Recommended Suite: Shimmer, Interactive Hover, Pulse Voice) -->
+            <div class="hero-cta-group">
+              <button type="button" class="shimmer-btn" onclick="document.getElementById('pills-intake-tab')?.click(); document.getElementById('intakeAssessmentForm')?.scrollIntoView({behavior: 'smooth'});">
+                <i class="fa-solid fa-rocket me-2"></i><span>Start Free Simulation</span>
+              </button>
+              <button type="button" class="interactive-hover-btn" onclick="startPsychometricQuiz()">
+                <div class="btn-bg-dot"></div>
+                <span class="btn-text-default"><i class="fa-solid fa-brain text-info"></i>Take 2-Min RIASEC Quiz</span>
+                <div class="btn-text-hover"><span>Start Quiz Now</span><i class="fa-solid fa-arrow-right"></i></div>
+              </button>
+              <button type="button" class="btn-pulse-voice" onclick="toggleChatWindow()">
+                <span class="voice-pulse-ring"></span>
+                <i class="fa-solid fa-microphone"></i>
+                <span>Ask AI Counselor (Voice)</span>
+              </button>
+            </div>
+
+            <!-- Live Performance KPI Metrics -->
+            <div class="hero-kpi-strip">
+              <div class="hero-kpi-item">
+                <div class="kpi-number text-primary">3 Routes</div>
+                <div class="kpi-label">Parallel Pathways</div>
+              </div>
+              <div class="hero-kpi-item">
+                <div class="kpi-number text-success">+₹80L Saved</div>
+                <div class="kpi-label">Contingency Debt Defense</div>
+              </div>
+              <div class="hero-kpi-item">
+                <div class="kpi-number text-info">Zero-Drop</div>
+                <div class="kpi-label">Contingency Modeling</div>
+              </div>
+              <div class="hero-kpi-item">
+                <div class="kpi-number text-warning">3 Languages</div>
+                <div class="kpi-label">मराठी • हिंदी • English</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             2. 21ST.DEV STYLE FEATURE BENTO GRID (Spotlight Micro-Interactions)
+             =================================================================== -->
+        <div class="feature-bento-grid mb-4" id="featureBentoGrid">
+          
+          <!-- Bento 1 (Large - Col 8): What-If Contingency Engine (Core USP) -->
+          <div class="bento-item col-span-8 spotlight-card">
+            <div>
+              <div class="bento-card-top">
+                <div class="bento-icon-box bento-icon-purple">
+                  <i class="fa-solid fa-shuffle"></i>
+                </div>
+                <span class="badge bento-tag bg-primary bg-opacity-25 text-primary border-primary border-opacity-25">
+                  ⭐ Core Hackathon USP
+                </span>
+              </div>
+              <h3 class="bento-title">Interactive "What-If" Scenario Contingency Simulator</h3>
+              <p class="bento-desc">
+                Real-time financial and burnout differential modeling. What happens when NEET/JEE cutoffs are missed or family finances take a sudden shock? Simulate immediate pivots without wasteful gap years.
+              </p>
+              <div class="bento-pills-row">
+                <span class="bento-mini-pill"><i class="fa-solid fa-circle-check text-success me-1"></i>Missed NEET ➔ +₹80L & 2 Yrs Saved</span>
+                <span class="bento-mini-pill"><i class="fa-solid fa-circle-check text-info me-1"></i>Missed JEE ➔ Autonomous/Polytechnic Fast-Track</span>
+                <span class="bento-mini-pill"><i class="fa-solid fa-circle-check text-warning me-1"></i>Budget Cut 50% ➔ Zero-Tuition Germany Model</span>
+              </div>
+            </div>
+            <div>
+              <button type="button" class="bento-action-btn" onclick="document.getElementById('pills-whatif-tab')?.click();">
+                <span>Explore What-If Simulator</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bento 2 (Col 4): Loan ROI & Scholarships -->
+          <div class="bento-item col-span-4 spotlight-card">
+            <div>
+              <div class="bento-card-top">
+                <div class="bento-icon-box bento-icon-cyan">
+                  <i class="fa-solid fa-calculator"></i>
+                </div>
+                <span class="badge bento-tag bg-info bg-opacity-25 text-info border-info border-opacity-25">
+                  💰 Financial Defense
+                </span>
+              </div>
+              <h3 class="bento-title">Loan ROI & Debt-Trap Risk Radar</h3>
+              <p class="bento-desc">
+                Simulate monthly EMI, Debt-to-Income (DTI) ratio, salary payback horizon, and match verified Maharashtra government scholarships.
+              </p>
+              <div class="bento-pills-row">
+                <span class="bento-mini-pill"><i class="fa-solid fa-chart-pie text-info me-1"></i>DTI Risk Gauge</span>
+                <span class="bento-mini-pill"><i class="fa-solid fa-hand-holding-dollar text-success me-1"></i>State Scholarships</span>
+              </div>
+            </div>
+            <div>
+              <button type="button" class="bento-action-btn" onclick="document.getElementById('pills-finance-tab')?.click();">
+                <span>Calculate Loan Risk</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bento 3 (Col 4): Psychometric RIASEC Aptitude Test -->
+          <div class="bento-item col-span-4 spotlight-card">
+            <div>
+              <div class="bento-card-top">
+                <div class="bento-icon-box bento-icon-emerald">
+                  <i class="fa-solid fa-brain"></i>
+                </div>
+                <span class="badge bento-tag bg-success bg-opacity-25 text-success border-success border-opacity-25">
+                  🧠 2-Min Scientific Test
+                </span>
+              </div>
+              <h3 class="bento-title">5-Question RIASEC Psychometric Quiz</h3>
+              <p class="bento-desc">
+                Evaluate Holland vocational codes (Realistic, Investigative, Artistic, Social, Enterprising, Conventional) through intuitive situational questions.
+              </p>
+              <div class="bento-pills-row">
+                <span class="bento-mini-pill">No 100-Question Fatigue</span>
+                <span class="bento-mini-pill">Instant Stream Match</span>
+              </div>
+            </div>
+            <div>
+              <button type="button" class="bento-action-btn text-success" onclick="startPsychometricQuiz()">
+                <span>Launch Quiz Modal</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bento 4 (Col 4): Multilingual AI Voice Counselor -->
+          <div class="bento-item col-span-4 spotlight-card">
+            <div>
+              <div class="bento-card-top">
+                <div class="bento-icon-box bento-icon-amber">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <span class="badge bento-tag bg-warning bg-opacity-25 text-warning border-warning border-opacity-25">
+                  🎙️ Voice & Text AI
+                </span>
+              </div>
+              <h3 class="bento-title">Interactive AI Counselor Chatbot</h3>
+              <p class="bento-desc">
+                Speaks and listens in English, हिंदी, and मराठी. Ask questions regarding Pune colleges under ₹5L budget, stream changes, or exam backups.
+              </p>
+              <div class="bento-pills-row">
+                <span class="bento-mini-pill">Speech-to-Text Mic</span>
+                <span class="bento-mini-pill">Gemini Multilingual</span>
+              </div>
+            </div>
+            <div>
+              <button type="button" class="bento-action-btn text-warning" onclick="toggleChatWindow()">
+                <span>Ask Counselor AI</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Bento 5 (Col 4): 1-Click Verified PDF Dossier -->
+          <div class="bento-item col-span-4 spotlight-card">
+            <div>
+              <div class="bento-card-top">
+                <div class="bento-icon-box bento-icon-rose">
+                  <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <span class="badge bento-tag bg-danger bg-opacity-25 text-danger border-danger border-opacity-25">
+                  📄 Institutional Report
+                </span>
+              </div>
+              <h3 class="bento-title">Official PDF Career Dossier</h3>
+              <p class="bento-desc">
+                Generate a branded executive career report with complete chronological milestones, financial comparisons, and verifiable QR signatures.
+              </p>
+              <div class="bento-pills-row">
+                <span class="bento-mini-pill">1-Click Client Export</span>
+                <span class="bento-mini-pill">HackMatrix PCCOE Verified</span>
+              </div>
+            </div>
+            <div>
+              <button type="button" class="bento-action-btn text-danger" onclick="document.getElementById('pills-matrix-tab')?.click();">
+                <span>View Decision Dossier</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tab Content Panes -->
+        <div class="tab-content" id="pills-tabContent">
+
+      <!-- TAB 1: INTAKE ASSESSMENT (FR-1) -->
+      <div class="tab-pane fade show active" id="pills-intake" role="tabpanel">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="custom-card spotlight-card p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-bold mb-0">
+                  <i class="fa-solid fa-user-pen text-primary me-2"></i>Class 10 Student & Parent Intake Assessment
+                </h4>
+                <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill">
+                  Estimated Average: <strong id="calculatedAvgMarks" class="text-primary fs-6">76.8%</strong>
+                </span>
+              </div>
+              <p class="text-secondary small mb-3">
+                Captures academic performance, family budget, risk appetite, and passions to eliminate opaque advice and recommend viable pathways.
+              </p>
+
+              <!-- Psychometric Quiz Invitation Banner -->
+              <div class="p-3 bg-primary bg-opacity-10 border border-primary-subtle rounded-3 mb-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div class="d-flex align-items-center">
+                  <div class="bg-primary text-white p-2 rounded-circle me-3">
+                    <i class="fa-solid fa-brain fa-lg"></i>
+                  </div>
+                  <div>
+                    <strong class="d-block small" data-i18n="quiz_banner_title">Confused about your natural strengths?</strong>
+                    <span class="text-secondary small">Take our 5-question Holland RIASEC quiz to discover your ideal aptitude profile.</span>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3 shadow-sm fw-semibold" onclick="startPsychometricQuiz()">
+                  <i class="fa-solid fa-wand-magic-sparkles me-1"></i><span data-i18n="quiz_banner_btn">Take 2-Min Psychometric Quiz</span>
+                </button>
+              </div>
+
+              <form id="intakeAssessmentForm">
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold small">Student Full Name</label>
+                    <input type="text" class="form-control" id="studentName" required value="Aarav Sharma">
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label fw-semibold small">Category (Reservation/Quota)</label>
+                    <select class="form-select" id="studentCategory">
+                      <option value="General" selected>General / Open</option>
+                      <option value="OBC">OBC</option>
+                      <option value="EWS">EWS</option>
+                      <option value="SC">SC</option>
+                      <option value="ST">ST</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label fw-semibold small">Target Aspiration</label>
+                    <input type="text" class="form-control" id="targetAspiration" value="Biotech / Healthcare Tech">
+                  </div>
+                </div>
+
+                <!-- Marks Grid -->
+                <div class="p-3 glass-card rounded-3 mb-4 border border-glass">
+                  <h6 class="fw-bold mb-3">
+                    <i class="fa-solid fa-award text-warning me-2"></i>Class 10 Subject Scores (Marks out of 100)
+                  </h6>
+                  <div class="row g-3">
+                    <div class="col-sm-3">
+                      <label class="form-label small text-muted">Mathematics</label>
+                      <input type="number" min="0" max="100" class="form-control" id="marksMath" value="68" required>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="form-label small text-muted">Science (Phy/Chem/Bio)</label>
+                      <input type="number" min="0" max="100" class="form-control" id="marksScience" value="86" required>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="form-label small text-muted">English & Languages</label>
+                      <input type="number" min="0" max="100" class="form-control" id="marksEnglish" value="78" required>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="form-label small text-muted">Social Science / IT</label>
+                      <input type="number" min="0" max="100" class="form-control" id="marksSocial" value="75" required>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Subject Affinities & Interests -->
+                <div class="mb-4">
+                  <label class="form-label fw-semibold small d-block">Student Interests & Affinities (Select all that apply):</label>
+                  <div class="d-flex flex-wrap gap-2">
+                    <div class="form-check form-check-inline m-0">
+                      <input class="btn-check" type="checkbox" name="interests" id="int_coding" value="Coding & Software">
+                      <label class="btn btn-outline-primary btn-sm rounded-pill" for="int_coding"><i class="fa-solid fa-code me-1"></i>Coding & Software</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                      <input class="btn-check" type="checkbox" name="interests" id="int_bio" value="Biology & Life Sciences" checked>
+                      <label class="btn btn-outline-primary btn-sm rounded-pill" for="int_bio"><i class="fa-solid fa-dna me-1"></i>Biology & Health</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                      <input class="btn-check" type="checkbox" name="interests" id="int_robotics" value="Robotics" checked>
+                      <label class="btn btn-outline-primary btn-sm rounded-pill" for="int_robotics"><i class="fa-solid fa-robot me-1"></i>Robotics & Hardware</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                      <input class="btn-check" type="checkbox" name="interests" id="int_business" value="Business & Finance">
+                      <label class="btn btn-outline-primary btn-sm rounded-pill" for="int_business"><i class="fa-solid fa-chart-pie me-1"></i>Business & Finance</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                      <input class="btn-check" type="checkbox" name="interests" id="int_design" value="UI/UX & Design">
+                      <label class="btn btn-outline-primary btn-sm rounded-pill" for="int_design"><i class="fa-solid fa-pen-nib me-1"></i>Design & Creative</label>
+                    </div>
+                    <div class="form-check form-check-inline m-0">
+                      <input class="btn-check" type="checkbox" name="interests" id="int_law" value="Law & Public Policy">
+                      <label class="btn btn-outline-primary btn-sm rounded-pill" for="int_law"><i class="fa-solid fa-scale-balanced me-1"></i>Law & Civil Services</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Financial & Strategic Constraints -->
+                <div class="row g-3 mb-4">
+                  <div class="col-md-5">
+                    <label class="form-label fw-semibold small">
+                      Total Family Education Budget (Without Loan)
+                      <span id="budgetSliderLabel" class="badge bg-success ms-2">₹6.0 Lakhs</span>
+                    </label>
+                    <input type="range" class="form-range" min="100000" max="3000000" step="50000" id="maxBudgetINR" value="600000"
+                      oninput="document.getElementById('budgetSliderLabel').innerText = `₹${(this.value/100000).toFixed(1)} Lakhs`">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label fw-semibold small">Location Preference</label>
+                    <select class="form-select" id="locationPreference">
+                      <option value="India" selected>India (State / National)</option>
+                      <option value="Abroad">Abroad (Germany / Low Tuition EU)</option>
+                      <option value="Both">Open to Both</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label fw-semibold small">Family Risk Appetite</label>
+                    <select class="form-select" id="riskTolerance">
+                      <option value="Conservative">Conservative (No Debt)</option>
+                      <option value="Moderate" selected>Moderate (Manageable Loan)</option>
+                      <option value="Ambitious">Ambitious (Tier-1 Focused)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                  <button type="submit" class="shimmer-btn px-5 py-3 fs-6">
+                    <i class="fa-solid fa-wand-magic-sparkles me-2"></i><span>Generate Multi-Pathway Roadmaps</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Feature Highlights Sidebar -->
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="custom-card spotlight-card p-4 mb-4">
+              <h5 class="fw-bold mb-3"><i class="fa-solid fa-shield-cat text-primary me-2"></i>Why MargDarshak AI?</h5>
+              <div class="d-flex align-items-start mb-3">
+                <i class="fa-solid fa-check-circle text-success me-3 mt-1 fs-5"></i>
+                <div>
+                  <strong class="d-block small">Anti-Binary Architecture</strong>
+                  <span class="text-secondary small">Breaks the traditional "Engineering or Medical or Nothing" trap with 8+ specialized modern degrees.</span>
+                </div>
+              </div>
+              <div class="d-flex align-items-start mb-3">
+                <i class="fa-solid fa-check-circle text-success me-3 mt-1 fs-5"></i>
+                <div>
+                  <strong class="d-block small">Financial Truth & Loan Meter</strong>
+                  <span class="text-secondary small">Reveals exact EMI and repayment years against real entry salaries to prevent family debt stress.</span>
+                </div>
+              </div>
+              <div class="d-flex align-items-start">
+                <i class="fa-solid fa-check-circle text-success me-3 mt-1 fs-5"></i>
+                <div>
+                  <strong class="d-block small">Deterministic + Gemini AI</strong>
+                  <span class="text-secondary small">Zero demo failures: runs effortlessly on Google Gemini or offline-ready rule bases.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="simulationLoading" class="custom-card p-4 text-center d-none">
+              <div class="spinner-border text-primary mb-3" role="status"></div>
+              <h6 class="fw-bold">Simulating Multi-Pathways...</h6>
+              <p class="text-muted small mb-0">Synthesizing institutional costs, entrance percentiles, and AI contingency models.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: SEQUENTIAL PATHWAY MAPS (FR-2) -->
+      <div class="tab-pane fade" id="pills-roadmap" role="tabpanel">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h4 class="fw-bold mb-1">
+              <i class="fa-solid fa-sitemap text-primary me-2"></i>Sequential Multi-Pathway Career Roadmaps
+            </h4>
+            <p class="text-secondary small mb-0">
+              3 distinct viable routes comparing high ambition, practical industry skills, and cost-optimized debt-free progression.
+            </p>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-success btn-sm rounded-pill shadow-sm" onclick="openSaveRoadmapModal()">
+              <i class="fa-solid fa-bookmark me-1"></i>Save This Roadmap
+            </button>
+            <button class="btn btn-outline-secondary btn-sm rounded-pill" onclick="loadPersona('PERSONA_A')">
+              <i class="fa-solid fa-rotate-right me-1"></i>Reset Simulation
+            </button>
+          </div>
+        </div>
+
+        <!-- AI Counselor Evaluation Banner -->
+        <div id="counselingCommentaryContainer"></div>
+
+        <!-- 3 Pathway Cards Container -->
+        <div class="row" id="pathwaysContainer"></div>
+      </div>
+
+      <!-- TAB 3: "WHAT-IF" SCENARIO SIMULATOR (FR-3) -->
+      <div class="tab-pane fade" id="pills-whatif" role="tabpanel">
+        <div class="what-if-banner mb-4">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <span class="badge bg-warning text-white px-3 py-1 rounded-pill fw-bold mb-2">
+                <i class="fa-solid fa-bolt me-1"></i>Core Hackathon USP
+              </span>
+              <h3 class="fw-bold text-white mb-2">Interactive "What-If" Contingency Sandbox</h3>
+              <p class="text-white-50 mb-0">
+                What happens when plans change? Simulate exam failure pivots, sudden family budget cuts, or international study comparisons with real-time financial diffs.
+              </p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+              <div class="badge bg-white bg-opacity-10 border border-white-25 p-2 px-3">
+                <i class="fa-solid fa-compass me-1"></i>Active Pivot Engine Ready
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- Preset Triggers -->
+          <div class="col-lg-5 mb-4">
+            <div class="custom-card p-4 h-100">
+              <h5 class="fw-bold mb-3">
+                <i class="fa-solid fa-traffic-light text-primary me-2"></i>Select Scenario Preset:
+              </h5>
+              <div id="scenarioPresetButtons" class="glass-card border border-glass p-2 rounded-4">
+                <!-- Injected via JS -->
+              </div>
+
+              <!-- Custom Sandbox Adjuster -->
+              <div class="mt-4 pt-3 border-top">
+                <h6 class="fw-bold mb-2">
+                  <i class="fa-solid fa-sliders text-secondary me-2"></i>Or Adjust Custom Budget Shock:
+                </h6>
+                <label class="form-label small text-muted">Adjust Family Budget Delta:</label>
+                <div class="d-flex align-items-center gap-3">
+                  <input type="range" class="form-range" id="sandboxBudgetSlider" min="-500000" max="500000" step="50000" value="0"
+                    oninput="document.getElementById('lblSandboxBudget').innerText = (this.value >= 0 ? '+' : '') + `₹${(this.value/100000).toFixed(1)}L`">
+                  <span id="lblSandboxBudget" class="badge bg-secondary">₹0.0L</span>
+                </div>
+                <button class="btn btn-outline-info btn-sm w-100 mt-2 rounded-pill glass-card" onclick="runCustomSandboxSimulation()">
+                  <i class="fa-solid fa-arrows-spin me-1"></i>Recalculate Sandbox Shock
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Impact Diff Results -->
+          <div class="col-lg-7">
+            <div id="whatIfLoading" class="text-center py-5 d-none">
+              <div class="spinner-border text-primary" role="status"></div>
+              <p class="small text-muted mt-2">Computing scenario diff and financial pivot...</p>
+            </div>
+
+            <div id="whatIfResultsContainer" class="d-none">
+              <!-- Diff Metrics Strip -->
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <div class="diff-metric-card glass-card border border-glass">
+                    <span class="small text-secondary d-block mb-1"><i class="fa-solid fa-sack-xmark me-1"></i>Cost Difference</span>
+                    <div id="diffCostDisplay" class="diff-delta green">- ₹80.0 Lakhs</div>
+                    <small class="text-muted">vs Original Path</small>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="diff-metric-card glass-card border border-glass">
+                    <span class="small text-secondary d-block mb-1"><i class="fa-regular fa-clock me-1"></i>Time Delta</span>
+                    <div id="diffTimeDisplay" class="diff-delta green">2 Years Saved</div>
+                    <small class="text-muted">No Repeat Drop Years</small>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="diff-metric-card glass-card border border-glass">
+                    <span class="small text-secondary d-block mb-1"><i class="fa-solid fa-heart-pulse me-1"></i>Risk Transformation</span>
+                    <div id="diffRiskDisplay" class="diff-delta blue">Extreme ➔ Low</div>
+                    <small class="text-muted">Burnout Defeated</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Impact Rationale -->
+              <div id="whatIfAIVerdict" class="glass-card border border-glass p-3 rounded-4 mb-4"></div>
+
+              <!-- Pivoted Pathway Roadmap Preview -->
+              <div id="pivotedRoadmapPreview"></div>
+            </div>
+
+            <!-- Empty State Prompt -->
+            <div id="whatIfEmptyPrompt" class="custom-card p-5 text-center">
+              <i class="fa-solid fa-arrows-split-up-and-left fa-3x text-muted mb-3"></i>
+              <h5 class="fw-bold">Click any scenario trigger on the left to simulate</h5>
+              <p class="text-secondary small mb-0">
+                Witness how MargDarshak AI preserves careers when competitive cutoffs are missed or budgets shrink.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: FINANCIAL FEASIBILITY & LOAN ROI (FR-4) -->
+      <div class="tab-pane fade" id="pills-finance" role="tabpanel">
+        <div class="row mb-4">
+          <div class="col-lg-6">
+            <div class="custom-card p-4">
+              <h5 class="fw-bold mb-3">
+                <i class="fa-solid fa-calculator text-primary me-2"></i>Education Loan Borrowing Index Simulator
+              </h5>
+              <p class="text-secondary small mb-4">
+                Calculate your exact monthly EMI, total interest paid, and realistically estimate how many years of starting salary it will take to repay.
+              </p>
+
+              <!-- Sliders -->
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label small fw-bold">Total Degree Cost (Tuition + Living)</label>
+                  <span id="valTotalCost" class="text-primary fw-bold">₹12.0 L</span>
+                </div>
+                <input type="range" class="form-range" id="loanTotalCost" min="200000" max="6000000" step="100000" value="1200000">
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label small fw-bold">Family Savings Dedicated</label>
+                  <span id="valFamilySavings" class="text-success fw-bold">₹4.0 L</span>
+                </div>
+                <input type="range" class="form-range" id="loanFamilySavings" min="0" max="3000000" step="50000" value="400000">
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label small fw-bold">Scholarship / Grant Offset</label>
+                  <span id="valScholarship" class="text-info fw-bold">₹1.0 L</span>
+                </div>
+                <input type="range" class="form-range" id="loanScholarship" min="0" max="1000000" step="25000" value="100000">
+              </div>
+
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label small fw-bold">Interest Rate (%)</label>
+                    <span id="valInterestRate" class="text-white fw-bold">9.5%</span>
+                  </div>
+                  <input type="range" class="form-range" id="loanInterestRate" min="7.0" max="14.0" step="0.5" value="9.5">
+                </div>
+                <div class="col-6">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label small fw-bold">Tenure (Years)</label>
+                    <span id="valTenure" class="text-white fw-bold">7 Yrs</span>
+                  </div>
+                  <input type="range" class="form-range" id="loanTenure" min="3" max="15" step="1" value="7">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <div class="d-flex justify-content-between">
+                  <label class="form-label small fw-bold">Target Starting Package (Annual CTC)</label>
+                  <span id="valSalary" class="text-success fw-bold">₹10.0 LPA</span>
+                </div>
+                <input type="range" class="form-range" id="loanSalary" min="300000" max="3000000" step="100000" value="1000000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Loan Output & Visual Gauge -->
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="custom-card p-4 h-100">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="fw-bold mb-0">Financial Feasibility Gauge</h5>
+                <span id="resRiskBadge" class="badge bg-success px-3 py-2 fs-6">Low Risk</span>
+              </div>
+
+              <!-- Risk Meter Bar -->
+              <div class="borrowing-meter">
+                <div id="borrowingMeterFill" class="borrowing-meter-fill" style="width: 85%; background-color: #10b981;"></div>
+              </div>
+              <p id="resLoanGuidance" class="small text-muted mb-3">
+                Safe borrowing ratio. Monthly EMI will stay below 30% of post-tax starting salary.
+              </p>
+
+              <!-- Financial Metric Cards -->
+              <div class="row g-2 mb-4">
+                <div class="col-6">
+                  <div class="p-3 glass-card rounded-3 text-center border border-glass">
+                    <small class="text-muted d-block">Loan Principal Needed</small>
+                    <strong id="resLoanPrincipal" class="fs-5 text-white">₹7,00,000</strong>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 glass-card rounded-3 text-center border border-glass">
+                    <small class="text-muted d-block">Monthly EMI</small>
+                    <strong id="resMonthlyEMI" class="fs-5 text-primary">₹11,438/mo</strong>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 glass-card rounded-3 text-center border border-glass">
+                    <small class="text-muted d-block">Total Interest Payable</small>
+                    <strong id="resTotalInterest" class="fs-5 text-warning">₹2,60,792</strong>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="p-3 glass-card rounded-3 text-center border border-glass">
+                    <small class="text-muted d-block">Total Repayment</small>
+                    <strong id="resTotalPayment" class="fs-5 text-danger">₹9,60,792</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payback Years & DTI -->
+              <div class="d-flex justify-content-between align-items-center p-3 border border-glass rounded-3 glass-card mb-3">
+                <div>
+                  <span class="small text-muted d-block">Debt-To-Income (DTI) Ratio</span>
+                  <strong id="resDTI" class="fs-5 text-white">16.1%</strong>
+                </div>
+                <div class="text-end">
+                  <span class="small text-muted d-block">Payback Horizon</span>
+                  <strong id="resPaybackYears" class="fs-5 text-success">3.2 Years</strong>
+                </div>
+              </div>
+
+              <!-- Chart Container -->
+              <div style="height: 180px;">
+                <canvas id="loanDoughnutChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integrated Scholarship Matcher -->
+        <div class="custom-card p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h5 class="fw-bold mb-0"><i class="fa-solid fa-graduation-cap text-success me-2"></i>Eligible Scholarships & Funding Matcher</h5>
+              <small class="text-muted">Filtered for student marks, income criteria, and government direct benefit transfer (DBT) schemes.</small>
+            </div>
+            <button class="btn btn-outline-success btn-sm rounded-pill" onclick="fetchAndRenderScholarships()">
+              <i class="fa-solid fa-arrows-rotate me-1"></i>Re-Match Scholarships
+            </button>
+          </div>
+          <div class="row" id="scholarshipsListContainer">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: EXPLAINABLE DECISION MATRIX (FR-5) -->
+      <div class="tab-pane fade" id="pills-matrix" role="tabpanel">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h4 class="fw-bold mb-1">
+              <i class="fa-solid fa-table-columns text-primary me-2"></i>Explainable Decision Matrix
+            </h4>
+            <p class="text-secondary small mb-0">
+              Side-by-side trade-off analysis comparing costs, earning timeline, exam risk, starting salaries, and transparent assumptions.
+            </p>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="interactive-hover-btn btn-emerald" onclick="openSaveRoadmapModal()">
+              <div class="btn-bg-dot"></div>
+              <span class="btn-text-default"><i class="fa-solid fa-bookmark me-1"></i>Save This Roadmap</span>
+              <div class="btn-text-hover"><span>Save to Profile</span><i class="fa-solid fa-check ms-1"></i></div>
+            </button>
+            <button class="interactive-hover-btn btn-cyan" onclick="downloadOfficialPDFDossier()">
+              <div class="btn-bg-dot"></div>
+              <span class="btn-text-default"><i class="fa-solid fa-file-arrow-down me-1"></i><span data-i18n="btn_export_pdf">Download Official Career Dossier (PDF)</span></span>
+              <div class="btn-text-hover"><span>Export Verifiable PDF</span><i class="fa-solid fa-arrow-down-to-bracket ms-1"></i></div>
+            </button>
+          </div>
+        </div>
+
+        <div id="decisionMatrixContainer" class="mb-4">
+          <!-- Injected via decisionMatrix.js -->
+        </div>
+
+        <!-- Printable Verification Footer -->
+        <div class="p-3 glass-card rounded-3 border border-glass small text-muted text-center">
+          <i class="fa-solid fa-shield-check text-success me-1"></i>
+          Generated by <strong>MargDarshak AI</strong> | Career Decision-Support System | Validated against AISHE & NEP 2020 Frameworks.
+        </div>
+      </div>
+    </div><!-- End of #pills-tabContent -->
+  </main><!-- End of .app-content -->
+
+  <!-- App Footer -->
+  <footer class="app-footer">
+    <div class="container-fluid text-center small">
+      <p class="mb-1 text-white fw-semibold">
+        MargDarshak AI (मार्गदर्शक AI) — Guiding Students & Parents Through Every Academic Crossroads.
+      </p>
+      <p class="mb-0 text-secondary">
+        Built for <strong>HackMatrix 5.0 (Kali Yuga)</strong> at Pimpri Chinchwad College of Engineering (PCCOE), Pune | Track 04: Miscellaneous (MISC-01).
+      </p>
+    </div>
+  </footer>
+</div><!-- End of .app-main-wrapper -->
+</div><!-- End of .app-shell -->
+
+  <!-- Auth Modal (Sign In / Register / Judge Demo) -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold">
+            <i class="fa-solid fa-user-lock text-primary me-2"></i>MargDarshak Account Access
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <!-- 1-Click Judge Demo Banner -->
+          <div class="p-3 bg-warning bg-opacity-10 border border-warning rounded-3 mb-4 text-center">
+            <h6 class="fw-bold mb-1">
+              <i class="fa-solid fa-bolt text-warning me-1"></i>Hackathon Judge / Guest Evaluation
+            </h6>
+            <p class="small text-muted mb-2">Skip manual registration and log in instantly as an authorized evaluator with preloaded saved roadmaps.</p>
+            <button class="btn btn-warning btn-sm fw-bold px-4 rounded-pill shadow-sm" onclick="handleDemoJudgeLogin()">
+              <i class="fa-solid fa-fingerprint me-1"></i>1-Click Judge Demo Login
+            </button>
+          </div>
+
+          <!-- Auth Tabs -->
+          <ul class="nav nav-tabs nav-fill mb-3" id="authTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active fw-bold small" id="login-tab" data-bs-toggle="tab" data-bs-target="#loginPane" type="button" role="tab">Sign In</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link fw-bold small" id="register-tab" data-bs-toggle="tab" data-bs-target="#registerPane" type="button" role="tab">Create Account</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="authTabContent">
+            <!-- Login Form -->
+            <div class="tab-pane fade show active" id="loginPane" role="tabpanel">
+              <form onsubmit="handleLoginSubmit(event)">
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Email Address</label>
+                  <input type="email" class="form-control" id="loginEmail" required placeholder="student@example.com">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Password</label>
+                  <input type="password" class="form-control" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-semibold">
+                  <i class="fa-solid fa-right-to-bracket me-1"></i>Sign In
+                </button>
+              </form>
+            </div>
+
+            <!-- Register Form -->
+            <div class="tab-pane fade" id="registerPane" role="tabpanel">
+              <form onsubmit="handleRegisterSubmit(event)">
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Full Name</label>
+                  <input type="text" class="form-control" id="regName" required placeholder="e.g. Rohan Deshmukh">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Email Address</label>
+                  <input type="email" class="form-control" id="regEmail" required placeholder="rohan@example.com">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">Password</label>
+                  <input type="password" class="form-control" id="regPassword" required placeholder="••••••••">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label small fw-semibold">I am a:</label>
+                  <select class="form-select" id="regUserType">
+                    <option value="Student" selected>Class 10 Student</option>
+                    <option value="Parent">Parent / Guardian</option>
+                    <option value="Counselor">Academic Counselor</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-success w-100 rounded-pill py-2 fw-semibold">
+                  <i class="fa-solid fa-user-plus me-1"></i>Register & Start Simulating
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Save Roadmap Modal -->
+  <div class="modal fade" id="saveRoadmapModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold">
+            <i class="fa-solid fa-bookmark text-success me-2"></i>Save This Career Roadmap
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <p class="small text-muted mb-3">Persist this simulation to your MongoDB profile so you can revisit, export, and compare it anytime.</p>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Roadmap Title</label>
+            <input type="text" class="form-control" id="saveRoadmapTitle" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-semibold">Personal Notes (Optional)</label>
+            <textarea class="form-control" id="saveRoadmapNotes" rows="3" placeholder="e.g. Discussed with family; preferred Plan B (Applied Route) due to zero entrance stress."></textarea>
+          </div>
+          <button type="button" class="btn btn-success w-100 rounded-pill py-2 fw-semibold" onclick="submitSaveRoadmap()">
+            <i class="fa-solid fa-cloud-arrow-up me-1"></i>Confirm & Save to MongoDB Profile
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- My Saved Roadmaps Drawer / Modal -->
+  <div class="modal fade" id="savedRoadmapsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <div>
+            <h5 class="modal-title fw-bold">
+              <i class="fa-solid fa-folder-open text-primary me-2"></i>My Saved Career Roadmaps
+            </h5>
+            <small class="text-muted">Browse your stored simulation snapshots stored in MongoDB.</small>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div id="savedRoadmapsListContainer">
+            <!-- Injected via auth.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5-Question Psychometric RIASEC Quiz Modal -->
+  <div class="modal fade" id="psychometricQuizModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <div class="d-flex align-items-center">
+            <div class="bg-primary text-white p-2 rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h5 class="modal-title fw-bold mb-0">Psychometric Aptitude Quiz</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <!-- Progress Bar -->
+          <div class="progress mb-4" style="height: 6px;">
+            <div id="quizProgressBar" class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 20%;"></div>
+          </div>
+          <div id="quizQuestionContainer">
+            <!-- Injected via aptitudeQuiz.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- html2pdf for Official Branded Career Dossier Generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Bootstrap 5.3 Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Application Client Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/aptitudeQuiz.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/roadmapVisualizer.js"></script>
+  <script src="js/whatIfSimulator.js"></script>
+  <script src="js/loanCalculator.js"></script>
+  <script src="js/decisionMatrix.js"></script>
+  <script src="js/projectIcon.js"></script>
+  <script src="js/app.js"></script>
+  <!-- GetLayers 3D WebGL Canvas Animation & Motion Gradients -->
+  <script src="js/getlayers3d.js"></script>
+  <!-- Vengeance UI Animated Rays & 21st.dev Spotlight Effects -->
+  <script src="js/animatedRays.js"></script>
+  <script src="js/spotlight.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment Secrets
+.env
+.env.local
+.env.*.local
+
+# Logs & Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS & Editor Metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# AI Agent & Local Tool metadata
+.gemini/
+.claude/
+.cursor/
+.grok/
+.kiro/
+.adal/
+graft/
+scratch/
+
+# Build & Video Cache
+brag-output/*.mp4
+brag-output/*.wav

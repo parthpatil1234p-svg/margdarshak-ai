@@ -1,0 +1,169 @@
+[
+  {
+    "id": "STREAM_PCM",
+    "name": "Science (PCM - Physics, Chemistry, Mathematics)",
+    "category": "Science",
+    "subjects": ["Physics", "Chemistry", "Mathematics", "English", "Computer Science / Informatics Practices"],
+    "minimumMarksRequirement": {
+      "math": 60,
+      "science": 60,
+      "overall": 65
+    },
+    "difficultyLevel": "High",
+    "typicalAptitudes": ["Analytical Thinking", "Problem Solving", "Spatial Reasoning", "Quantitative Ability"],
+    "targetCompetitiveExams": ["JEE Main", "JEE Advanced", "MHT-CET", "BITSAT", "NDA", "CUET"],
+    "undergraduateOptions": [
+      "B.Tech / B.E. (Computer Science, AI & DS, ECE, Mechanical, Aerospace)",
+      "B.Arch (Architecture)",
+      "B.Sc (Data Science, Mathematics, Physics, Statistics)",
+      "BCA (Bachelor of Computer Applications)",
+      "Commercial Pilot Training (CPL)",
+      "B.Des (Industrial / Interaction Design)"
+    ],
+    "description": "The premier gateway to engineering, computing, architecture, defense, and analytical technology careers.",
+    "pros": ["Highest volume of high-paying tech jobs", "High flexibility to switch into finance/business later", "Global recognition"],
+    "cons": ["Intense competitive exam pressure", "High coaching expenses in private sector", "Burnout risk"]
+  },
+  {
+    "id": "STREAM_PCB",
+    "name": "Science (PCB - Physics, Chemistry, Biology)",
+    "category": "Science",
+    "subjects": ["Physics", "Chemistry", "Biology", "English", "Psychology / Physical Education"],
+    "minimumMarksRequirement": {
+      "science": 65,
+      "english": 60,
+      "overall": 65
+    },
+    "difficultyLevel": "High",
+    "typicalAptitudes": ["Investigative", "Empathy", "Scientific Inquiry", "Memory Retention", "Observation"],
+    "targetCompetitiveExams": ["NEET-UG", "AIIMS Paramedical", "CUET-UG", "ICAR AIEEA"],
+    "undergraduateOptions": [
+      "MBBS (Medicine & Surgery)",
+      "BDS (Dental Surgery)",
+      "BAMS / BHMS (Ayurvedic / Homeopathic Medicine)",
+      "B.Sc (Biotechnology, Microbiology, Genetics, Bioinformatics)",
+      "B.Pharm (Pharmacy)",
+      "BPT (Physiotherapy)",
+      "B.Sc Nursing / Allied Health Sciences"
+    ],
+    "description": "The quintessential route for healthcare, medical sciences, biological research, pharmaceuticals, and diagnostics.",
+    "pros": ["Direct societal impact and respected profession", "Resilient healthcare industry demand", "Diverse clinical & research paths"],
+    "cons": ["Extreme competition (24+ lakh aspirants for ~1 lakh MBBS seats)", "Long gestation period before high earnings (5.5 yrs + MD/MS)", "Private medical colleges cost ₹60L - ₹1.2 Cr"]
+  },
+  {
+    "id": "STREAM_PCMB",
+    "name": "Science (PCMB - Physics, Chemistry, Maths, Biology)",
+    "category": "Science",
+    "subjects": ["Physics", "Chemistry", "Mathematics", "Biology", "English"],
+    "minimumMarksRequirement": {
+      "math": 65,
+      "science": 65,
+      "overall": 70
+    },
+    "difficultyLevel": "Very High",
+    "typicalAptitudes": ["Multi-disciplinary Focus", "High Academic Resilience", "Systemic Thinking"],
+    "targetCompetitiveExams": ["JEE Main", "NEET-UG", "BITSAT", "IISER IAT", "NEST", "CUET"],
+    "undergraduateOptions": [
+      "B.Tech in Biotechnology / Biomedical Engineering",
+      "BS-MS Dual Degree (IISER / IISc)",
+      "MBBS / B.Tech (keeps both doors open)",
+      "B.Sc / B.Tech in Computational Biology & Bioinformatics",
+      "Agricultural Engineering & Food Tech"
+    ],
+    "description": "A rigorous dual-option stream offering maximum flexibility across both engineering and medical/bio domains.",
+    "pros": ["Zero regrets: eligible for both JEE and NEET", "Ideal for emerging intersectional fields (Genomics, MedTech, Prosthetics)", "Strong scientific research foundation"],
+    "cons": ["Highest academic workload among all streams", "Risk of divided focus diluting competitive percentile in both JEE & NEET"]
+  },
+  {
+    "id": "STREAM_COMMERCE_MATH",
+    "name": "Commerce with Mathematics",
+    "category": "Commerce",
+    "subjects": ["Accountancy", "Business Studies", "Economics", "Mathematics", "English"],
+    "minimumMarksRequirement": {
+      "math": 55,
+      "overall": 60
+    },
+    "difficultyLevel": "Moderate to High",
+    "typicalAptitudes": ["Financial Acumen", "Quantitative Logic", "Strategic Thinking", "Organized Planning"],
+    "targetCompetitiveExams": ["CUET-UG (DU, BHU)", "IPMAT (IIM Indore/Rohtak)", "CA Foundation", "SET / NPAT", "ACET (Actuarial)"],
+    "undergraduateOptions": [
+      "B.Com (Hons) / B.Com Financial Markets",
+      "BBA / BMS (Finance, International Business)",
+      "Integrated BBA + MBA (5-Year IPM at IIMs)",
+      "B.Sc Economics / Applied Statistics",
+      "Chartered Accountancy (CA) / CFA / ACCA",
+      "Actuarial Science"
+    ],
+    "description": "Combines corporate economics and commerce with quantitative rigor, opening doors to high finance and leadership.",
+    "pros": ["Direct track to corporate finance, investment banking, and consulting", "Shorter years to earning compared to medicine", "Lucrative starting salaries in fintech & Big 4"],
+    "cons": ["High competition for top colleges (SRCC, St. Xavier's, IIM IPM)", "Requires strong conceptual math ability"]
+  },
+  {
+    "id": "STREAM_COMMERCE_NON_MATH",
+    "name": "Commerce with Informatics / Applied Studies",
+    "category": "Commerce",
+    "subjects": ["Accountancy", "Business Studies", "Economics", "Informatics Practices / Entrepreneurship", "English"],
+    "minimumMarksRequirement": {
+      "overall": 55
+    },
+    "difficultyLevel": "Moderate",
+    "typicalAptitudes": ["Business Acumen", "Interpersonal Communication", "Operational Execution"],
+    "targetCompetitiveExams": ["CUET-UG", "CLAT (Law)", "NIFT", "SET", "CS Executive Entrance"],
+    "undergraduateOptions": [
+      "BBA (Marketing, HR, Supply Chain)",
+      "B.Com (General)",
+      "BBA LLB (5-Year Corporate Law)",
+      "Company Secretary (CS)",
+      "B.Des (Fashion / Retail Design)",
+      "Hotel & Hospitality Management"
+    ],
+    "description": "Focuses on commercial principles, entrepreneurship, trade law, and corporate administration without advanced calculus.",
+    "pros": ["Manageable academic stress with high practical applicability", "Fast entry into business, family firms, or marketing roles", "Strong pairing with Law (CLAT)"],
+    "cons": ["Ineligible for pure Economics (Hons) or Actuarial programs requiring 12th math"]
+  },
+  {
+    "id": "STREAM_HUMANITIES",
+    "name": "Humanities & Social Sciences",
+    "category": "Arts/Humanities",
+    "subjects": ["History", "Political Science", "Psychology / Sociology", "Economics / Geography", "English"],
+    "minimumMarksRequirement": {
+      "overall": 50
+    },
+    "difficultyLevel": "Moderate",
+    "typicalAptitudes": ["Verbal Reasoning", "Critical Analysis", "Empathy", "Writing & Expression", "Societal Awareness"],
+    "targetCompetitiveExams": ["CUET-UG", "CLAT", "AILET", "NID DAT", "UCEED", "UPSC (Post-Grad)"],
+    "undergraduateOptions": [
+      "BA (Hons) in Psychology / Economics / Political Science",
+      "BA LLB (5-Year Law at National Law Universities)",
+      "B.Des (Interaction Design, UX/UI, Graphic Design)",
+      "Bachelor of Journalism & Mass Communication (BJMC)",
+      "Civil Services (UPSC CSE Foundation pathway)",
+      "Public Policy & International Relations"
+    ],
+    "description": "Explores human behavior, law, governance, societal systems, psychology, design thinking, and creative expression.",
+    "pros": ["Direct foundation for high-prestige careers in Law, Civil Services, UX Design, and Policy", "Fosters superior communication and critical thinking", "Growing industry demand for UX research and cognitive psychology"],
+    "cons": ["Starting salaries can vary widely depending on tier of institution and applied portfolio"]
+  },
+  {
+    "id": "STREAM_POLYTECHNIC_DIPLOMA",
+    "name": "Polytechnic / Vocational Technical Diploma",
+    "category": "Vocational/Technical",
+    "subjects": ["Applied Mathematics", "Applied Sciences", "Technical Drawing", "Engineering Domain Labs"],
+    "minimumMarksRequirement": {
+      "math": 50,
+      "science": 50,
+      "overall": 50
+    },
+    "difficultyLevel": "Practical / Hands-on",
+    "typicalAptitudes": ["Practical Problem Solving", "Hands-on Tinkering", "Kinesthetic Learning"],
+    "targetCompetitiveExams": ["State Polytechnic Entrance", "DSE (Direct Second Year Lateral Entry)"],
+    "undergraduateOptions": [
+      "Direct 2nd Year B.Tech / B.E. (Lateral Entry without JEE!)",
+      "Advanced Diploma in Automation / Cloud / Robotics",
+      "Direct Junior Engineer / Technician placement in Industry"
+    ],
+    "description": "A 3-year hands-on engineering diploma directly after Class 10. Allows direct entry into 2nd year B.Tech, bypassing 11/12th and JEE entirely!",
+    "pros": ["Zero entrance exam stress (no JEE)", "Saves 1 year if entering workforce directly", "Ultra cost-effective: Govt Polytechnic fee is < ₹15,000/yr", "Direct Second Year Engineering entry reservation"],
+    "cons": ["Fewer premier tier-1 seats (IITs do not accept lateral entry)", "Requires early commitment to a specific technical branch"]
+  }
+]

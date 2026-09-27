@@ -1,0 +1,92 @@
+[
+  {
+    "id": "SCHOLAR_CENTRAL_SECTOR",
+    "name": "Central Sector Scheme of Scholarship for College and University Students (CSSS)",
+    "provider": "Department of Higher Education, Ministry of Education, Govt of India",
+    "portal": "National Scholarship Portal (NSP)",
+    "benefitAmountPerYearINR": 20000,
+    "maxDurationYears": 4,
+    "eligibility": {
+      "minBoardPercentile": 80,
+      "maxFamilyIncomeINR": 450000,
+      "targetCourses": ["UG Degree (B.Tech, MBBS, B.Com, B.Sc, BA)"]
+    },
+    "categoryScope": "All Categories (General / OBC / SC / ST / EWS)",
+    "description": "Direct benefit transfer (DBT) scholarship for top 20th percentile board exam scorers pursuing regular undergraduate studies."
+  },
+  {
+    "id": "SCHOLAR_PMSSS_JK",
+    "name": "Prime Minister's Special Scholarship Scheme (PMSSS)",
+    "provider": "AICTE & Ministry of Education",
+    "portal": "AICTE PMSSS Portal",
+    "benefitAmountPerYearINR": 225000,
+    "maxDurationYears": 4,
+    "eligibility": {
+      "minBoardPercentile": 60,
+      "maxFamilyIncomeINR": 800000,
+      "targetRegion": "Jammu & Kashmir and Ladakh UTs",
+      "targetCourses": ["Engineering", "Medical / Nursing", "General Degree"]
+    },
+    "categoryScope": "Domicile of J&K / Ladakh",
+    "description": "Covers full tuition fees up to ₹1.25 Lakhs/yr (General) / ₹3 Lakhs/yr (Engineering) plus ₹1 Lakh/yr maintenance allowance for hostel/food."
+  },
+  {
+    "id": "SCHOLAR_MAHADBT_RAJARSHI_SHAHU",
+    "name": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojna (EBC)",
+    "provider": "Government of Maharashtra (Higher & Technical Education)",
+    "portal": "MahaDBT",
+    "benefitAmountPerYearINR": 75000,
+    "maxDurationYears": 4,
+    "eligibility": {
+      "minBoardPercentile": 50,
+      "maxFamilyIncomeINR": 800000,
+      "domicile": "Maharashtra",
+      "targetCourses": ["B.Tech", "MBBS", "B.Pharm", "Polytechnic Diploma", "Architecture", "MBA"]
+    },
+    "categoryScope": "Open / EBC / SEBC / General",
+    "description": "50% tuition and exam fee waiver in Govt and Private unaided colleges across Maharashtra for students with family income under ₹8 Lakhs."
+  },
+  {
+    "id": "SCHOLAR_RELIANCE_FOUNDATION",
+    "name": "Reliance Foundation Undergraduate Scholarship",
+    "provider": "Reliance Foundation",
+    "portal": "Reliance Foundation Scholarships Portal",
+    "benefitAmountPerYearINR": 100000,
+    "maxDurationYears": 4,
+    "eligibility": {
+      "minBoardPercentile": 75,
+      "maxFamilyIncomeINR": 1500000,
+      "targetCourses": ["First Year UG (Any Stream)"]
+    },
+    "categoryScope": "Merit-cum-Means (Across India)",
+    "description": "Awards ₹2,00,000 across the degree duration for meritorious first-year students, with special preference for girls and differently-abled students."
+  },
+  {
+    "id": "SCHOLAR_INSPIRE_DST",
+    "name": "Scholarship for Higher Education (SHE) - INSPIRE Scheme",
+    "provider": "Department of Science & Technology (DST), Govt of India",
+    "portal": "INSPIRE Web Portal",
+    "benefitAmountPerYearINR": 80000,
+    "maxDurationYears": 5,
+    "eligibility": {
+      "minBoardPercentile": 99,
+      "targetCourses": ["B.Sc / BS / Int. M.Sc in Pure & Natural Sciences (Maths, Physics, Chem, Bio)"]
+    },
+    "categoryScope": "Top 1% in Class 12 Board Exams",
+    "description": "Generous fellowship of ₹80,000 annually (₹60,000 scholarship + ₹20,000 summer research mentorship grant) for students opting for basic and natural sciences."
+  },
+  {
+    "id": "SCHOLAR_DAAD_GERMANY",
+    "name": "DAAD & Deutschlandstipendium (Study in Germany)",
+    "provider": "German Federal Govt & University Partnerships",
+    "portal": "DAAD Portal",
+    "benefitAmountPerYearINR": 360000,
+    "maxDurationYears": 3,
+    "eligibility": {
+      "minBoardPercentile": 85,
+      "targetCourses": ["Public University Bachelors in Germany (STEM / Economics)"]
+    },
+    "categoryScope": "International Scholars (India to Germany)",
+    "description": "€300 per month stipend for high-achieving undergraduate students at German public research universities, combining state and private funding."
+  }
+]

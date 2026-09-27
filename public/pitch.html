@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MargDarshak AI — 60s Polished Pitch Reel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(18, 26, 44, 0.85);
+      --border: rgba(56, 189, 248, 0.25);
+      --primary: #38bdf8;
+      --accent: #f59e0b;
+      --success: #10b981;
+    }
+    body {
+      background: radial-gradient(circle at top, #0f1c30 0%, var(--bg) 100%);
+      color: #f8fafc;
+      font-family: system-ui, -apple-system, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .pitch-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      max-width: 1050px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .scene-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 2.5rem;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .badge-scene {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      font-size: 0.85rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 2rem;
+      font-weight: 600;
+    }
+    .timer-badge {
+      font-family: monospace;
+      font-size: 1.15rem;
+      color: var(--accent);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.5rem;
+    }
+    .spoken-script {
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      border-left: 4px solid var(--primary);
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+      font-weight: 500;
+    }
+    .visual-cue-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    .progress-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #f59e0b);
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-top: 1rem;
+    }
+    .btn-pitch {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-pitch:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: var(--primary);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pitch-container">
+    <!-- Progress Bar -->
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- Main Scene Card -->
+    <div class="scene-card" id="sceneCard">
+      <div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge-scene" id="sceneBadge">SCENE 1 of 6</span>
+          <span class="timer-badge" id="timerBadge">00:00 / 01:00</span>
+        </div>
+        <h3 class="fw-bold mb-1" id="sceneTitle" style="color: #38bdf8;">1. The Binary Crisis</h3>
+        <p class="text-secondary small mb-3" id="sceneSubtitle">HackMatrix 5.0 | High-Stakes Hook</p>
+        
+        <!-- Live Spoken Words -->
+        <div class="spoken-script" id="spokenScript">
+          "Respected Judges, in India, 43 lakh students finish Class 10 every year and 90% are forced into a high-risk JEE or NEET binary—triggering catastrophic financial debt of up to ₹80 Lakhs and severe burnout. MargDarshak AI is India’s first Explainable Multi-Pathway Career Simulator."
+        </div>
+      </div>
+
+      <!-- Action / Visual Cue -->
+      <div class="visual-cue-box" id="visualCue">
+        <i class="fa-solid fa-desktop text-info fs-4"></i>
+        <div>
+          <strong class="text-white d-block">On-Screen Action:</strong>
+          <span>Highlight Hero Metrics bar: 43 Lakh Student Crisis, +₹80L Debt Trap, and JEE/NEET Binary.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="controls-bar">
+      <div class="d-flex gap-2">
+        <button class="btn btn-pitch" onclick="prevScene()"><i class="fa-solid fa-backward me-1"></i> Prev</button>
+        <button class="btn btn-pitch btn-primary text-dark fw-bold" id="playBtn" onclick="togglePlay()"><i class="fa-solid fa-play me-1"></i> Start 60s Reel</button>
+        <button class="btn btn-pitch" onclick="nextScene()">Next <i class="fa-solid fa-forward ms-1"></i></button>
+      </div>
+      <div class="text-secondary small">
+        <span>Press <kbd class="bg-dark text-white border border-secondary px-1">Space</kbd> to Play/Pause | <kbd class="bg-dark text-white border border-secondary px-1">←</kbd> <kbd class="bg-dark text-white border border-secondary px-1">→</kbd> to Jump</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scenes = [
+      {
+        start: 0,
+        end: 10,
+        badge: "SCENE 1 (00-10s)",
+        title: "1. The Binary Crisis & Problem",
+        subtitle: "HackMatrix 5.0 | High-Stakes Hook",
+        script: "“Respected Judges, in India, 43 lakh students finish Class 10 every year and 90% are forced into a high-risk JEE or NEET binary—triggering catastrophic financial debt of up to ₹80 Lakhs and severe burnout. MargDarshak AI is India’s first Explainable Multi-Pathway Career Simulator.”",
+        visual: "Highlight Hero Metrics bar: 43 Lakh Student Crisis, +₹80L Debt Trap, and JEE/NEET Binary."
+      },
+      {
+        start: 10,
+        end: 20,
+        badge: "SCENE 2 (10-20s)",
+        title: "2. 1-Click Intake & RIASEC Aptitude Engine",
+        subtitle: "Empirical Assessment vs Peer Pressure",
+        script: "“Instead of arbitrary choices, 1-Click Personas like Aarav (Bio+Tech) and Rajesh (₹4L Budget Parent) load verified profiles in two seconds. Our Holland RIASEC psychometric quiz recommends streams based on genuine aptitude rather than peer pressure.”",
+        visual: "Click on 'Aarav Sharma (Bio+Tech)' persona chip and preview the 5-Question RIASEC Vocational Radar."
+      },
+      {
+        start: 20,
+        end: 30,
+        badge: "SCENE 3 (20-30s)",
+        title: "3. 3-Tier Sequential Multi-Pathway Roadmap",
+        subtitle: "Parallel Milestone Projections",
+        script: "“We generate three parallel, structured routes: 1. Primary Aspirant for Tier-1 ambitions, 2. Applied Industry for fast-track employability, and 3. Cost-Optimized Polytechnic to Degree—guaranteeing a 100% Debt-Free graduation.”",
+        visual: "Scroll across Route 1 (Tier-1), Route 2 (Autonomous State), and Route 3 (0-Debt Polytechnic to DSE)."
+      },
+      {
+        start: 30,
+        end: 45,
+        badge: "SCENE 4 (30-45s) — [KILLER USP]",
+        title: "4. Interactive What-If Contingency Engine",
+        subtitle: "Real-Time Dynamic Pivot Sandbox",
+        script: "“Our core innovation is the 'What-If' Contingency Engine. What happens if a student misses the NEET cutoff? In one click, MargDarshak AI pivots the career into Bioinformatics or Data Science, saving ₹80 Lakhs in private college fees and two critical drop years.”",
+        visual: "Trigger 'What-If: NEET Cutoff Missed' preset. Point to the glowing green Delta Card (+₹80L & 0 Drop Years)."
+      },
+      {
+        start: 45,
+        end: 55,
+        badge: "SCENE 5 (45-55s)",
+        title: "5. Financial Feasibility & Printable Career Dossier",
+        subtitle: "Debt-to-Income (DTI) & State Scholarship Matcher",
+        script: "“Our Debt-to-Income Gauge prevents predatory loan traps while auto-matching state scholarships like MahaDBT. Everything is consolidated into a 1-Click Verifiable Career Dossier PDF.”",
+        visual: "Adjust the Loan Principal slider, show DTI Risk Meter shift to 'Safe (<15%)', and click 'Download Dossier (PDF)'."
+      },
+      {
+        start: 55,
+        end: 60,
+        badge: "SCENE 6 (55-60s)",
+        title: "6. Multilingual Voice AI & UN SDG Close",
+        subtitle: "Quality Education (SDG 4) & Decent Work (SDG 8)",
+        script: "“With a Multilingual Voice AI Counselor fluent in Marathi, Hindi, and English and 100% offline fallback reliability, MargDarshak AI democratizes career guidance for UN SDGs 4 and 8. Thank you!”",
+        visual: "Open AI Counselor modal, show Marathi chat query streaming, and display SDG 4 & 8 badges."
+      }
+    ];
+
+    let currentSceneIndex = 0;
+    let isPlaying = false;
+    let elapsedSeconds = 0;
+    let timerInterval = null;
+
+    // Audio tone generator for zero-overhead sound cues
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq = 580, duration = 0.08) {
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function renderScene(index) {
+      const s = scenes[index];
+      document.getElementById('sceneBadge').textContent = s.badge;
+      document.getElementById('sceneTitle').textContent = s.title;
+      document.getElementById('sceneSubtitle').textContent = s.subtitle;
+      document.getElementById('spokenScript').textContent = s.script;
+      document.getElementById('visualCue').innerHTML = `
+        <i class="fa-solid fa-desktop text-info fs-4"></i>
+        <div>
+          <strong class="text-white d-block">On-Screen Action:</strong>
+          <span>${s.visual}</span>
+        </div>
+      `;
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(elapsedSeconds / 60).toString().padStart(2, '0');
+      const secs = (elapsedSeconds % 60).toString().padStart(2, '0');
+      document.getElementById('timerBadge').textContent = `${mins}:${secs} / 01:00`;
+      document.getElementById('progressFill').style.width = `${(elapsedSeconds / 60) * 100}%`;
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        pause();
+      } else {
+        play();
+      }
+    }
+
+    function play() {
+      if (elapsedSeconds >= 60) elapsedSeconds = 0;
+      isPlaying = true;
+      document.getElementById('playBtn').innerHTML = `<i class="fa-solid fa-pause me-1"></i> Pause`;
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      
+      timerInterval = setInterval(() => {
+        elapsedSeconds++;
+        updateTimerDisplay();
+
+        // Check scene transition
+        const matchedIndex = scenes.findIndex(s => elapsedSeconds >= s.start && elapsedSeconds < s.end);
+        if (matchedIndex !== -1 && matchedIndex !== currentSceneIndex) {
+          currentSceneIndex = matchedIndex;
+          renderScene(currentSceneIndex);
+          playBeep(720, 0.1);
+        }
+
+        if (elapsedSeconds >= 60) {
+          pause();
+          playBeep(900, 0.25);
+        }
+      }, 1000);
+    }
+
+    function pause() {
+      isPlaying = false;
+      clearInterval(timerInterval);
+      document.getElementById('playBtn').innerHTML = `<i class="fa-solid fa-play me-1"></i> Start 60s Reel`;
+    }
+
+    function nextScene() {
+      if (currentSceneIndex < scenes.length - 1) {
+        currentSceneIndex++;
+        elapsedSeconds = scenes[currentSceneIndex].start;
+        renderScene(currentSceneIndex);
+        updateTimerDisplay();
+        playBeep(640, 0.08);
+      }
+    }
+
+    function prevScene() {
+      if (currentSceneIndex > 0) {
+        currentSceneIndex--;
+        elapsedSeconds = scenes[currentSceneIndex].start;
+        renderScene(currentSceneIndex);
+        updateTimerDisplay();
+        playBeep(520, 0.08);
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        togglePlay();
+      } else if (e.code === 'ArrowRight') {
+        nextScene();
+      } else if (e.code === 'ArrowLeft') {
+        prevScene();
+      }
+    });
+
+    // Initial render
+    renderScene(0);
+    updateTimerDisplay();
+  </script>
+</body>
+</html>

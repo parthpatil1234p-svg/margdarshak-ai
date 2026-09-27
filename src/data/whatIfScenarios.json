@@ -1,0 +1,155 @@
+[
+  {
+    "scenarioId": "NEET_FAIL",
+    "title": "What if I do not crack NEET (or miss Govt MBBS cutoff)?",
+    "triggerCategory": "COMPETITIVE_EXAM_OUTCOME",
+    "applicableStreams": ["STREAM_PCB", "STREAM_PCMB"],
+    "description": "24+ lakh students compete for ~55,000 Govt MBBS seats. Private colleges demand ₹80L-₹1.2Cr, which leads to crippling debt. This scenario simulates high-growth alternative pivots.",
+    "pivotOptions": [
+      {
+        "pathwayName": "Pivot to Bioinformatics & Computational Genomics",
+        "newStreamOrDegree": "B.Tech / B.Sc in Bioinformatics & AI in Healthcare",
+        "entranceReq": "CUET-UG / University Entrance (Low/Moderate Pressure)",
+        "durationYears": 4,
+        "totalCostINR": 750000,
+        "costDeltaINR": -8000000,
+        "yearsSaved": 2,
+        "riskChange": "High Risk ➔ Low Risk",
+        "targetCareer": "Bioinformatics Engineer / Clinical Data Scientist",
+        "medianSalaryINR": 850000,
+        "rationale": "Leverages biology enthusiasm with tech skills. Avoids repeat drop years and prevents ₹80L+ private medical debt."
+      },
+      {
+        "pathwayName": "Pivot to Pharmacy (B.Pharm + Clinical Pharmacology)",
+        "newStreamOrDegree": "B.Pharm (State Govt / Autonomous)",
+        "entranceReq": "MHT-CET / State CET",
+        "durationYears": 4,
+        "totalCostINR": 450000,
+        "costDeltaINR": -8300000,
+        "yearsSaved": 2,
+        "riskChange": "High Risk ➔ Low Risk",
+        "targetCareer": "Clinical Pharmacist / Regulatory Affairs Specialist",
+        "medianSalaryINR": 650000,
+        "rationale": "Directly accessible via state CET without repeating NEET. Strong career progression in global pharma."
+      },
+      {
+        "pathwayName": "Pivot to Clinical Psychology & Cognitive Science",
+        "newStreamOrDegree": "B.Sc / BA Clinical Psychology",
+        "entranceReq": "CUET-UG / 12th Merit",
+        "durationYears": 3,
+        "totalCostINR": 350000,
+        "costDeltaINR": -8500000,
+        "yearsSaved": 3,
+        "riskChange": "High Risk ➔ Very Low Risk",
+        "targetCareer": "Cognitive Behavioral Specialist / UX Researcher",
+        "medianSalaryINR": 700000,
+        "rationale": "Deeply fulfilling clinical work without NEET entrance barrier. High growth in corporate mental health and digital UX."
+      }
+    ]
+  },
+  {
+    "scenarioId": "JEE_FAIL",
+    "title": "What if I do not clear JEE Advanced for IIT?",
+    "triggerCategory": "COMPETITIVE_EXAM_OUTCOME",
+    "applicableStreams": ["STREAM_PCM", "STREAM_PCMB"],
+    "description": "Over 14 lakh candidates take JEE Main for only ~17,000 IIT seats. Failing JEE Advanced is NOT the end of tech careers.",
+    "pivotOptions": [
+      {
+        "pathwayName": "Top State Autonomous Route (e.g. COEP / VJTI via MHT-CET)",
+        "newStreamOrDegree": "B.Tech CSE/IT via State CET",
+        "entranceReq": "MHT-CET (98+ percentile, much higher success rate than JEE Adv)",
+        "durationYears": 4,
+        "totalCostINR": 640000,
+        "costDeltaINR": -560000,
+        "yearsSaved": 0,
+        "riskChange": "High Risk ➔ Moderate Risk",
+        "targetCareer": "Software Engineer / Product Analyst",
+        "medianSalaryINR": 1100000,
+        "rationale": "COEP and top state autonomous colleges provide on-par median salaries to middle-tier NITs at 50% lower tuition fees."
+      },
+      {
+        "pathwayName": "BCA + Top MCA (NIMCET Route to NITs)",
+        "newStreamOrDegree": "BCA (3 Years) ➔ MCA at NITs via NIMCET",
+        "entranceReq": "CUET / Direct Merit for BCA, NIMCET for MCA",
+        "durationYears": 5,
+        "totalCostINR": 520000,
+        "costDeltaINR": -680000,
+        "yearsSaved": 0,
+        "riskChange": "High Risk ➔ Low Risk",
+        "targetCareer": "Cloud Solutions Architect / Full-Stack Engineer",
+        "medianSalaryINR": 950000,
+        "rationale": "Circumvents intense 12th JEE pressure completely. NIMCET has 1/10th the applicant volume of JEE."
+      },
+      {
+        "pathwayName": "B.Sc Data Science & AI (Dual/Hybrid Online-Offline)",
+        "newStreamOrDegree": "BS in Data Science (IIT Madras Hybrid) + Local College",
+        "entranceReq": "Qualifier Test (Not rank-based, anyone scoring >50% passes)",
+        "durationYears": 4,
+        "totalCostINR": 340000,
+        "costDeltaINR": -860000,
+        "yearsSaved": 0,
+        "riskChange": "High Risk ➔ Very Low Risk",
+        "targetCareer": "Data Scientist / AI Engineer",
+        "medianSalaryINR": 900000,
+        "rationale": "Open entry benchmarked by performance rather than cut-throat single-day entrance competition."
+      }
+    ]
+  },
+  {
+    "scenarioId": "BUDGET_CUT_50",
+    "title": "What if our family annual education budget drops by 50%?",
+    "triggerCategory": "FINANCIAL_SHOCK",
+    "applicableStreams": ["STREAM_PCM", "STREAM_PCB", "STREAM_COMMERCE_MATH", "STREAM_HUMANITIES"],
+    "description": "Simulates unexpected economic shock, job loss, or medical emergencies, eliminating reliance on private college loans.",
+    "pivotOptions": [
+      {
+        "pathwayName": "Polytechnic Diploma ➔ Direct Second Year (DSE) State B.Tech",
+        "newStreamOrDegree": "Govt Polytechnic (3 yrs) + Direct 2nd Year Govt B.Tech (3 yrs)",
+        "entranceReq": "Class 10 SSC Merit (Zero coaching expense)",
+        "durationYears": 6,
+        "totalCostINR": 320000,
+        "costDeltaINR": -1600000,
+        "yearsSaved": 0,
+        "riskChange": "High Debt Risk ➔ Zero Debt Risk",
+        "targetCareer": "Embedded Systems Engineer / Software Engineer",
+        "medianSalaryINR": 750000,
+        "rationale": "Cuts education cost by over 75% while achieving the exact same B.Tech degree from a state university with zero bank loans."
+      },
+      {
+        "pathwayName": "Central/State University B.Sc + Industry Certifications",
+        "newStreamOrDegree": "B.Sc Computer Science / IT at Govt Autonomous College",
+        "entranceReq": "CUET-UG / 12th Merit",
+        "durationYears": 3,
+        "totalCostINR": 180000,
+        "costDeltaINR": -1400000,
+        "yearsSaved": 1,
+        "riskChange": "High Debt Risk ➔ Zero Debt Risk",
+        "targetCareer": "Full-Stack Web / DevOps Specialist",
+        "medianSalaryINR": 550000,
+        "rationale": "Enables first earning 1 year earlier. Pair low-cost college with open-source github portfolios and cloud certifications."
+      }
+    ]
+  },
+  {
+    "scenarioId": "STUDY_ABROAD_GERMANY",
+    "title": "What if I study in Germany/Public European University vs Indian Private College?",
+    "triggerCategory": "GLOBAL_MOBILITY",
+    "applicableStreams": ["STREAM_PCM", "STREAM_PCMB"],
+    "description": "Contrasting Indian private engineering (₹18-25L tuition) against German public university (Tuition €0, world-class lab infrastructure).",
+    "pivotOptions": [
+      {
+        "pathwayName": "TU Munich / RWTH Aachen Public Tech Route (Germany)",
+        "newStreamOrDegree": "B.Sc Mechanical / Information Engineering in Germany",
+        "entranceReq": "Studienkolleg T-Course / 1st Year India B.Tech + Goethe B2/C1",
+        "durationYears": 3.5,
+        "totalCostINR": 3800000,
+        "costDeltaINR": 1600000,
+        "yearsSaved": 0.5,
+        "riskChange": "Moderate Risk ➔ High Initial Living Expense, but 3x Starting Salary",
+        "targetCareer": "Robotics Systems Engineer (Munich / EU)",
+        "medianSalaryINR": 4800000,
+        "rationale": "Tuition is free in most German federal states. Expenses are solely living costs (~€934/month blocked account). Starting salaries are €55,000 (~₹48-52 LPA) with 18-month job seeker visa."
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+file 'C:/Users/PARTH/OneDrive/Documents/hackethon/HackMatrix 5.0/MargDarshak AI/brag-output/frames/frame_1.jpg'
+duration 10
+file 'C:/Users/PARTH/OneDrive/Documents/hackethon/HackMatrix 5.0/MargDarshak AI/brag-output/frames/frame_2.jpg'
+duration 10
+file 'C:/Users/PARTH/OneDrive/Documents/hackethon/HackMatrix 5.0/MargDarshak AI/brag-output/frames/frame_3.jpg'
+duration 10
+file 'C:/Users/PARTH/OneDrive/Documents/hackethon/HackMatrix 5.0/MargDarshak AI/brag-output/frames/frame_4.jpg'
+duration 15
+file 'C:/Users/PARTH/OneDrive/Documents/hackethon/HackMatrix 5.0/MargDarshak AI/brag-output/frames/frame_5.jpg'
+duration 10
+file 'C:/Users/PARTH/OneDrive/Documents/hackethon/HackMatrix 5.0/MargDarshak AI/brag-output/frames/frame_6.jpg'
+duration 5
+file 'C:/Users/PARTH/OneDrive/Documents/hackethon/HackMatrix 5.0/MargDarshak AI/brag-output/frames/frame_6.jpg'
