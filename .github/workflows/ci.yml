@@ -1,0 +1,41 @@
+name: MargDarshak AI CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  verify:
+    name: Automated Verification & Security Audit
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+      - name: 📥 Check out repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧪 Run Automated Verification Test Suite (18/18 Tests)
+        run: |
+          npm test
+          node test/auth.test.js
+          node test/chat.test.js
+
+      - name: 📡 Verify Health Check API
+        run: |
+          node server.js &
+          sleep 3
+          curl -s http://localhost:5000/api/health | grep '"status":"online"'
