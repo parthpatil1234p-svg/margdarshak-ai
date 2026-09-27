@@ -30,5 +30,5 @@ graft/
 scratch/
 
 # Build & Video Cache
-brag-output/*.mp4
-brag-output/*.wav
+brag-output/
+
