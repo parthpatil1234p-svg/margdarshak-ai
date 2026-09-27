@@ -1,0 +1,52 @@
+===================================================================
+HACKMATRIX 5.0 (KALI YUGA) - OFFICIAL REPOSITORY SUBMISSION
+===================================================================
+
+Team Name: MargDarshak Architects
+Track: Track 04: Miscellaneous
+Problem Statement ID: MISC-01 (Career Path Simulator: From Class 10 to Career)
+Institution: Pimpri Chinchwad College of Engineering (PCCOE), Pune
+
+GitHub Repository Link:
+👉 https://github.com/parthpatil/margdarshak-ai
+(Note: Replace with your exact repository URL)
+
+-------------------------------------------------------------------
+TEAM DETAILS:
+-------------------------------------------------------------------
+1. Leader:   Parth Patil     — Lead & Backend Architect     (PRN: 25G0005BCAG1042)
+2. Member 2: Aditi Vispute   — Frontend & Assessment        (PRN: 25G0005BCAG1029)
+3. Member 3: Asmita Lokhande — UI/UX & Career Universe      (PRN: 25G0005BCAG1040)
+4. Member 4: Suyog Pawar     — Roadmap & Presentation       (PRN: 25G0005BCAG1045)
+
+-------------------------------------------------------------------
+LOCAL SETUP & RUNNING INSTRUCTIONS:
+-------------------------------------------------------------------
+1. Clone the repository:
+   git clone https://github.com/<your-username>/margdarshak-ai.git
+   cd margdarshak-ai
+
+2. Install dependencies:
+   npm install
+
+3. Run automated tests (18/18 verified):
+   npm test
+   node test/auth.test.js
+   node test/chat.test.js
+
+4. Start production server:
+   npm start
+
+5. Open in browser:
+   http://localhost:5000/
+
+-------------------------------------------------------------------
+KEY FEATURES IMPLEMENTED:
+-------------------------------------------------------------------
+✓ 1-Click Intake Assessment & Holland RIASEC Psychometric Quiz
+✓ 3-Tier Multi-Pathway Roadmap (Tier-1 Aspirant, Industry, 0-Debt Polytechnic)
+✓ Interactive What-If Contingency Engine (NEET Failure Pivot: +₹80L & 2 Yrs Saved)
+✓ Financial Feasibility Engine (EMI, DTI Risk Gauge & MahaDBT Scholarship Matcher)
+✓ Explainable Decision Matrix & 1-Click Printable PDF Career Dossier
+✓ Multilingual Voice AI Counselor (मराठी • हिंदी • English) with Zero-Failure Fallback
+===================================================================
