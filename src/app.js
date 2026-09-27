@@ -21,7 +21,19 @@ const app = express();
 app.use(helmet({
   contentSecurityPolicy: false // Allows inline assets, Chart.js and FontAwesome CDN for hackathon demo
 }));
-app.use(cors());
+// Flexible CORS for Vercel Frontend + Local Development
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow local development, server-to-server, and any Vercel/Render origins
+    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1') || origin.endsWith('.vercel.app') || origin.endsWith('.onrender.com')) {
+      return callback(null, true);
+    }
+    return callback(null, true); // Fallback permissive for hackathon live judging
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
