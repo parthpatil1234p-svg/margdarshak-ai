@@ -93,7 +93,7 @@
           <span>Saved Roadmaps</span>
         </button>
 
-        <button type="button" class="sidebar-link" onclick="openSettingsModal()">
+        <button type="button" class="sidebar-link" data-bs-toggle="modal" data-bs-target="#settingsModal" onclick="openSettingsModal()">
           <i class="fa-solid fa-gear text-primary"></i>
           <span>Preferences & Settings</span>
         </button>
@@ -158,7 +158,7 @@
           </div>
 
           <!-- Settings Trigger Button -->
-          <button type="button" class="btn btn-outline-light btn-sm rounded-pill px-2 px-sm-3 d-flex align-items-center" onclick="openSettingsModal()" aria-label="Open System Settings" title="System Preferences & Dark Mode">
+          <button type="button" class="btn btn-outline-light btn-sm rounded-pill px-2 px-sm-3 d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#settingsModal" onclick="openSettingsModal()" aria-label="Open System Settings" title="System Preferences & Dark Mode">
             <i class="fa-solid fa-gear me-1 text-primary"></i>
             <span class="d-none d-sm-inline fw-semibold">Settings</span>
           </button>
@@ -1070,6 +1070,8 @@
         </div>
       </div>
     </div>
+  </div>
+
   <!-- Accessible System Preferences & Settings Modal -->
   <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-lg">

@@ -336,9 +336,11 @@ const applyStoredSettings = () => {
 
 const openSettingsModal = () => {
   const modalEl = document.getElementById('settingsModal');
-  if (modalEl && typeof bootstrap !== 'undefined') {
-    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
-    modal.show();
+  if (modalEl) {
+    if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+      const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+      modal.show();
+    }
   }
 };
 
