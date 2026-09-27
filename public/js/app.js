@@ -221,6 +221,14 @@ const simulateCareerRoadmap = async (profile) => {
       // Render Decision Matrix
       renderDecisionMatrix(pathData.pathways);
 
+      // Trigger UX enhancements
+      if (typeof window.markStepComplete === 'function') {
+        window.markStepComplete(2);
+      }
+      if (typeof window.showToast === 'function') {
+        window.showToast('Career Pathways Generated', 'Generated 3 parallel pathways with zero-regret milestones', 'fa-route', 'success');
+      }
+
       // Sync loan calculator total cost from primary pathway
       const primaryCost = pathData.pathways[0]?.financialSummary?.totalCostINR || 1200000;
       const loanCostSlider = document.getElementById('loanTotalCost');

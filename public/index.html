@@ -128,6 +128,13 @@
         </div>
 
         <div class="topbar-right">
+          <!-- Quick Search & Command Palette Trigger (Ctrl+K) -->
+          <button type="button" class="command-palette-trigger-btn d-none d-md-inline-flex" onclick="openCommandPalette()" title="Press Ctrl+K or Cmd+K to search">
+            <i class="fa-solid fa-magnifying-glass text-primary"></i>
+            <span class="d-none d-lg-inline">Quick Command...</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+
           <!-- 1-Click Judge & Demo Personas (Capsule) -->
           <div class="persona-switcher-bar d-none d-xl-flex">
             <span class="small text-muted px-2" style="font-size: 0.72rem;">
@@ -396,6 +403,11 @@
           </div>
 
         </div>
+
+        <!-- ===================================================================
+             3. INTERACTIVE DECISION WORKFLOW PROGRESS STEPPER
+             =================================================================== -->
+        <div id="workflowStepperSlot"></div>
 
         <!-- Tab Content Panes -->
         <div class="tab-content" id="pills-tabContent">
@@ -1250,5 +1262,7 @@
   <script src="js/spotlight.js"></script>
   <!-- 21st.dev Particle Button Burst Interaction -->
   <script src="js/particleButton.js"></script>
+  <!-- Advanced UX Enhancements Engine (Command Palette, Stepper, Toasts, Drawer) -->
+  <script src="js/uxEnhancer.js"></script>
 </body>
 </html>

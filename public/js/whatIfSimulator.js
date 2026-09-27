@@ -76,6 +76,13 @@ const runWhatIfScenario = async (scenarioId, clickedBtn = null) => {
     const data = await res.json();
     if (data.success) {
       renderWhatIfResults(data);
+      if (typeof window.markStepComplete === 'function') {
+        window.markStepComplete(3);
+      }
+      if (typeof window.showToast === 'function') {
+        const savedINR = data.differential?.costDeltaINR ? Math.abs(data.differential.costDeltaINR) : 8000000;
+        window.showToast('What-If Pivot Computed', `Modeled pivot saving ₹${(savedINR/100000).toFixed(0)} Lakhs and 0 drop years!`, 'fa-shuffle', 'info');
+      }
     }
   } catch (err) {
     console.error('[What-If Simulation Error]', err);
