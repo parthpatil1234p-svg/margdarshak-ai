@@ -17,6 +17,15 @@ const server = app.listen(PORT, () => {
   console.log('====================================================');
 });
 
+// Process resilience handlers
+process.on('uncaughtException', (err) => {
+  console.warn('[Server Warning] Uncaught exception caught safely:', err.message);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.warn('[Server Warning] Unhandled rejection caught safely:', reason?.message || reason);
+});
+
 // Graceful shutdown handling
 process.on('SIGTERM', () => {
   console.log('SIGTERM signal received: closing HTTP server');

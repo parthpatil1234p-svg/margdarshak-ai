@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 let isConnected = false;
 
+// Handle any subsequent mongoose connection errors gracefully without crashing the process
+mongoose.connection.on('error', (err) => {
+  isConnected = false;
+});
+
 const connectDB = async () => {
   if (isConnected) return;
 
