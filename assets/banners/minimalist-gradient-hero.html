@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MargDarshak AI - Minimalist Gradient Hero Banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #050811;
+      --text-main: #ffffff;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --indigo-glow: rgba(99, 102, 241, 0.4);
+      --cyan-glow: rgba(6, 182, 212, 0.35);
+      --rose-glow: rgba(244, 63, 94, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 24px;
+    }
+
+    /* 1920x800 Proportional Hero Banner Canvas */
+    .hero-banner-container {
+      width: 100%;
+      max-width: 1920px;
+      min-height: 720px;
+      position: relative;
+      background: radial-gradient(circle at 50% 0%, #0d1527 0%, var(--bg-base) 75%);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 48px;
+    }
+
+    /* Minimalist Ambient Gradient Orbs */
+    .gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      opacity: 0.65;
+      z-index: 1;
+      animation: floatAmbient 12s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 550px;
+      height: 550px;
+      top: -15%;
+      left: 18%;
+      background: radial-gradient(circle, var(--indigo-glow) 0%, rgba(99, 102, 241, 0) 70%);
+    }
+
+    .orb-2 {
+      width: 480px;
+      height: 480px;
+      top: 20%;
+      right: 15%;
+      background: radial-gradient(circle, var(--cyan-glow) 0%, rgba(6, 182, 212, 0) 70%);
+      animation-delay: -6s;
+    }
+
+    .orb-3 {
+      width: 400px;
+      height: 400px;
+      bottom: -10%;
+      left: 38%;
+      background: radial-gradient(circle, var(--rose-glow) 0%, rgba(244, 63, 94, 0) 70%);
+      animation-delay: -3s;
+    }
+
+    @keyframes floatAmbient {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -20px) scale(1.08); }
+      100% { transform: translate(-25px, 25px) scale(0.95); }
+    }
+
+    /* Subtle Grid Texture Overlay */
+    .grid-mesh {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Central Content Layer */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    /* Eyebrow Pill Tag */
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #818cf8;
+      box-shadow: 0 4px 15px -3px rgba(99, 102, 241, 0.25);
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #34d399;
+      box-shadow: 0 0 8px #34d399;
+      animation: pulseDot 2s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Master Display Headline */
+    .hero-headline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--text-main);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, #818cf8 70%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Body Subtitle */
+    .hero-subtext {
+      font-size: clamp(1rem, 1.3vw, 1.25rem);
+      line-height: 1.65;
+      color: var(--text-body);
+      max-width: 780px;
+      font-weight: 400;
+    }
+
+    /* CTA Button Group with Button-in-Button Pattern */
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .btn-primary-glow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px 8px 24px;
+      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+      color: #ffffff;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-primary-glow:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 15px 35px -5px rgba(99, 102, 241, 0.65);
+    }
+
+    .btn-icon-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-primary-glow:hover .btn-icon-circle {
+      transform: translateX(3px);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-secondary-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      color: #cbd5e1;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary-ghost:hover {
+      color: #ffffff;
+      background: rgba(30, 41, 59, 0.8);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Social Proof Metrics Strip */
+    .hero-stats-capsule {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 24px;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stat-item strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .stat-divider {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner-container {
+        padding: 56px 20px;
+        min-height: auto;
+      }
+      .hero-stats-capsule {
+        flex-direction: column;
+        gap: 8px;
+        border-radius: 16px;
+        padding: 14px 20px;
+      }
+      .stat-divider {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimalist Gradient Hero Banner -->
+  <header class="hero-banner-container">
+    <!-- Ambient Blur Gradients -->
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="grid-mesh"></div>
+
+    <!-- Core Content Container -->
+    <div class="hero-content">
+      <!-- Eyebrow Badge -->
+      <div class="eyebrow-pill">
+        <span class="eyebrow-dot"></span>
+        <span>India's 1st Multi-Pathway Career Simulator</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-headline">
+        Beyond the Binary.<br>
+        <span class="text-gradient">Simulate Your True Career.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtext">
+        Break free from blind JEE/NEET drop-year traps. Explore 3-Tier parallel roadmaps, interactive What-If cutoff contingencies, and ₹0-debt polytechnic fast-tracks with explainable data certainty.
+      </p>
+
+      <!-- CTA Button Row -->
+      <div class="hero-cta-row">
+        <a href="#simulate" class="btn-primary-glow">
+          <span>Start Free Simulation</span>
+          <div class="btn-icon-circle">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <a href="#whatif" class="btn-secondary-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 3 21 3 21 8"></polyline>
+            <line x1="4" y1="20" x2="21" y2="3"></line>
+            <polyline points="21 16 21 21 16 21"></polyline>
+            <line x1="15" y1="15" x2="21" y2="21"></line>
+            <line x1="4" y1="4" x2="9" y2="9"></line>
+          </svg>
+          <span>What-If Contingency Engine</span>
+        </a>
+      </div>
+
+      <!-- Live Metrics Strip -->
+      <div class="hero-stats-capsule">
+        <div class="stat-item">
+          <span>🎯 <strong>43 Lakhs+</strong> Class 10 Students</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span>💸 <strong>₹80 Lakhs</strong> Debt Prevented</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span>🌱 <strong>SDG 4 & 8</strong> Verified</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+</body>
+</html>
