@@ -1800,6 +1800,33 @@ small, .small {
   box-shadow: 0 0 15px rgba(99, 102, 241, 0.35);
 }
 
+.settings-nav-tabs {
+  background: rgba(15, 23, 42, 0.85);
+  gap: 6px;
+}
+
+.settings-tab-btn {
+  color: #94a3b8 !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 8px 8px 0 0 !important;
+  transition: all 0.2s ease !important;
+  font-size: 0.88rem;
+}
+
+.settings-tab-btn:hover {
+  color: #f1f5f9 !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.settings-tab-btn.active {
+  color: #38bdf8 !important;
+  background: rgba(99, 102, 241, 0.15) !important;
+  border-bottom: 2px solid #38bdf8 !important;
+  font-weight: 700 !important;
+}
+
 /* Light Theme Mode */
 body.theme-light {
   --bg-deep: #f8fafc;
@@ -1850,6 +1877,55 @@ body.theme-light .sidebar-link:hover {
 body.theme-light .sidebar-link.active {
   background: linear-gradient(90deg, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0.03) 100%) !important;
   color: #4338ca !important;
+}
+
+body.theme-light .settings-nav-tabs {
+  background: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.theme-light .settings-tab-btn {
+  color: #64748b !important;
+}
+
+body.theme-light .settings-tab-btn:hover {
+  color: #1e293b !important;
+  background: #e2e8f0 !important;
+}
+
+body.theme-light .settings-tab-btn.active {
+  color: #4f46e5 !important;
+  background: #ffffff !important;
+  border-bottom: 2px solid #4f46e5 !important;
+}
+
+body.theme-light .theme-card {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.theme-light .theme-card .text-light {
+  color: #0f172a !important;
+}
+
+body.theme-light .theme-card.active {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border-color: #4f46e5 !important;
+}
+
+body.theme-light #settingsModal .bg-dark {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.theme-light #settingsModal .bg-dark .text-light {
+  color: #0f172a !important;
+}
+
+body.theme-light #settingsModal .form-select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
 }
 
 /* Cyber Glow Theme Mode */
