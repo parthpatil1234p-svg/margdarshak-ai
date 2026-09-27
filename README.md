@@ -72,17 +72,38 @@ Every year, over **2.5 Crore Indian students** complete Class 10 and face irreve
   - **Persona C (Ananya Sen):** 94%+ high achiever targeting AI research and Germany's zero-tuition model.
 - **Holland RIASEC Psychometric Test:** 5-question vocational radar mapping *Realistic, Investigative, Artistic, Social, Enterprising, and Conventional* traits without assessment fatigue.
 
+<div align="center">
+  <img src="docs/screenshots/01_hero_intake.png" alt="Class 10 Intake Dashboard & 1-Click Personas" width="850" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px;" />
+  <p><em>Fig 1: Modern Intake Portal with 1-Click Personas & Holland RIASEC Assessment Trigger</em></p>
+</div>
+
+---
+
 ### 2. 🗺️ 3-Tier Sequential Multi-Pathway Visualizer
 Maps sequential milestones from `Class 10` ➔ `11th/12th Stream or Polytechnic` ➔ `Entrance / UG Degree` ➔ `Specializations & Internships` ➔ `Career Placement`:
 - **Route 1 (Primary Aspirant):** High-ambition Tier-1 targets (IITs, AIIMS, BITS).
 - **Route 2 (Applied Industry Fast-Track):** Practical, skill-first employment route via autonomous state engineering/tech colleges.
 - **Route 3 (Cost-Optimized / 100% Debt-Free):** Polytechnic Diploma ➔ Direct Second Year (DSE) B.Tech with zero education loan debt.
 
+<div align="center">
+  <img src="docs/screenshots/02_pathways_3tier.png" alt="3-Tier Multi-Pathway Roadmap Visualizer" width="850" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px;" />
+  <p><em>Fig 2: 3-Tier Parallel Pathways with Milestones, Tier-1 Targets, and 0-Debt Polytechnic Routes</em></p>
+</div>
+
+---
+
 ### 3. 💥 Interactive "What-If" Scenario Simulator (OUR KILLER USP)
 Dynamic contingency modeling that eliminates repeat drop years and saves millions in predatory tuition:
 - **Preset 1: Missed NEET Cutoff:** Instant pivot to Bioinformatics / Healthcare Data Science, **saving ₹80 Lakhs** in private medical college fees and **2 critical drop years**.
 - **Preset 2: Missed JEE Advanced:** Instant pivot to State Autonomous Institutions (COEP/VJTI) with Cloud/AI certifications.
 - **Preset 3: 50% Family Budget Shock:** Reconfigures degree path into government-aided polytechnic with tuition waivers.
+
+<div align="center">
+  <img src="docs/screenshots/03_whatif_contingency.png" alt="What-If Contingency Engine Simulation" width="850" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px;" />
+  <p><em>Fig 3: What-If Contingency Sandbox showing dynamic pivot diffs, ₹80L fee savings & 2 drop years avoided</em></p>
+</div>
+
+---
 
 ### 4. 💰 Financial Feasibility, Debt-to-Income (DTI) & Scholarship Engine
 - Computes monthly EMI, total interest, and 5-Year Salary Payback Horizons based on realistic entry-level placements.
@@ -93,14 +114,34 @@ Dynamic contingency modeling that eliminates repeat drop years and saves million
   - *AICTE Pragati & Saksham Fellowships*
   - *Central Sector Scheme of Scholarships (NSP)*
 
+<div align="center">
+  <img src="docs/screenshots/04_financial_loan_roi.png" alt="Financial Feasibility & Loan ROI Calculator" width="850" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px;" />
+  <p><em>Fig 4: Loan EMI, Debt-to-Income Gauge, Salary Payback Horizon & MahaDBT Scholarship Matcher</em></p>
+</div>
+
+---
+
 ### 5. 📄 Explainable Decision Matrix & 1-Click PDF Career Dossier
 - Side-by-side trade-off matrix analyzing total investment, loan principal, years to first paycheck, starting CTC, and burnout probabilities.
 - **1-Click Export:** Generates an official, verifiable **Career Dossier PDF** with roadmap milestones and transparent assumptions.
 
-### 6. 🤖 Multilingual Voice AI Counselor
+<div align="center">
+  <img src="docs/screenshots/05_decision_matrix.png" alt="Decision Matrix & Side-by-Side Trade-off Comparison" width="850" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 20px;" />
+  <p><em>Fig 5: Multi-Pathway Trade-Off Comparison Matrix with 1-Click Official Dossier PDF Export</em></p>
+</div>
+
+---
+
+### 6. 🤖 Multilingual Voice AI Counselor & Holland RIASEC Radar
 - Conversational counselor powered by **Google Gemini API** (`gemini-2.5-flash`).
 - Speaks and listens in **Marathi (मराठी)**, **Hindi (हिंदी)**, and **English** with speech-to-text mic integration.
 - **Zero-Failure Dual Engine:** Deterministic heuristic fallback engine guarantees 100% demo uptime under firewalled or offline hackathon network environments.
+
+<div align="center">
+  <img src="docs/screenshots/06_riasec_quiz.png" alt="Holland RIASEC Psychometric Assessment" width="420" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-right: 10px;" />
+  <img src="docs/screenshots/07_ai_counselor_chat.png" alt="Multilingual AI Voice Counselor" width="420" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);" />
+  <p><em>Fig 6: (Left) Holland RIASEC Vocational Radar | (Right) Multilingual AI Voice Counselor</em></p>
+</div>
 
 ---
 
