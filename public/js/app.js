@@ -51,7 +51,8 @@ const DEMO_PERSONAS = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize what-if presets and loan calculator
+  // Initialize user settings, what-if presets, and loan calculator
+  applyStoredSettings();
   if (typeof initWhatIfScenarios === 'function') initWhatIfScenarios();
   if (typeof initLoanCalculator === 'function') initLoanCalculator();
 
@@ -290,3 +291,125 @@ window.quickJudgeWhatIf = () => {
     }, 200);
   }
 };
+
+// ==========================================================================
+// Accessible System Settings & Theme Controller
+// ==========================================================================
+const SETTINGS_KEY = 'margdarshak_user_settings';
+
+const getStoredSettings = () => {
+  try {
+    const raw = localStorage.getItem(SETTINGS_KEY);
+    return raw ? JSON.parse(raw) : {
+      theme: 'oled',
+      voiceCounsel: true,
+      scholarships: true,
+      highContrast: false,
+      reducedMotion: false
+    };
+  } catch (_) {
+    return { theme: 'oled', voiceCounsel: true, scholarships: true, highContrast: false, reducedMotion: false };
+  }
+};
+
+const saveStoredSettings = (settings) => {
+  try {
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+  } catch (_) {}
+};
+
+const applyStoredSettings = () => {
+  const s = getStoredSettings();
+  setAppTheme(s.theme, false);
+  toggleHighContrast(s.highContrast, false);
+  toggleReducedMotion(s.reducedMotion, false);
+  
+  const voiceSw = document.getElementById('settingVoiceSwitch');
+  if (voiceSw) voiceSw.checked = s.voiceCounsel;
+  const aidSw = document.getElementById('settingScholarshipSwitch');
+  if (aidSw) aidSw.checked = s.scholarships;
+  const hcSw = document.getElementById('settingHighContrastSwitch');
+  if (hcSw) hcSw.checked = s.highContrast;
+  const rmSw = document.getElementById('settingReducedMotionSwitch');
+  if (rmSw) rmSw.checked = s.reducedMotion;
+};
+
+const openSettingsModal = () => {
+  const modalEl = document.getElementById('settingsModal');
+  if (modalEl && typeof bootstrap !== 'undefined') {
+    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    modal.show();
+  }
+};
+
+const setAppTheme = (themeName, persist = true) => {
+  document.body.classList.remove('theme-light', 'theme-cyber');
+  ['themeCardOled', 'themeCardCyber', 'themeCardLight'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+
+  if (themeName === 'light') {
+    document.body.classList.add('theme-light');
+    const el = document.getElementById('themeCardLight');
+    if (el) el.classList.add('active');
+  } else if (themeName === 'cyber') {
+    document.body.classList.add('theme-cyber');
+    const el = document.getElementById('themeCardCyber');
+    if (el) el.classList.add('active');
+  } else {
+    const el = document.getElementById('themeCardOled');
+    if (el) el.classList.add('active');
+  }
+
+  if (persist) {
+    const s = getStoredSettings();
+    s.theme = themeName;
+    saveStoredSettings(s);
+  }
+};
+
+const toggleHighContrast = (enabled, persist = true) => {
+  if (enabled) {
+    document.body.classList.add('high-contrast-mode');
+  } else {
+    document.body.classList.remove('high-contrast-mode');
+  }
+  if (persist) {
+    const s = getStoredSettings();
+    s.highContrast = enabled;
+    saveStoredSettings(s);
+  }
+};
+
+const toggleReducedMotion = (enabled, persist = true) => {
+  if (enabled) {
+    document.body.classList.add('reduced-motion-mode');
+  } else {
+    document.body.classList.remove('reduced-motion-mode');
+  }
+  if (persist) {
+    const s = getStoredSettings();
+    s.reducedMotion = enabled;
+    saveStoredSettings(s);
+  }
+};
+
+const toggleVoiceCounsel = (enabled) => {
+  const s = getStoredSettings();
+  s.voiceCounsel = enabled;
+  saveStoredSettings(s);
+};
+
+const toggleScholarshipAlerts = (enabled) => {
+  const s = getStoredSettings();
+  s.scholarships = enabled;
+  saveStoredSettings(s);
+};
+
+window.openSettingsModal = openSettingsModal;
+window.setAppTheme = setAppTheme;
+window.toggleHighContrast = toggleHighContrast;
+window.toggleReducedMotion = toggleReducedMotion;
+window.toggleVoiceCounsel = toggleVoiceCounsel;
+window.toggleScholarshipAlerts = toggleScholarshipAlerts;

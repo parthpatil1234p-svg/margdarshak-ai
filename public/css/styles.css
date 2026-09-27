@@ -1723,13 +1723,132 @@ small, .small {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* ==========================================================================
+   Accessible Settings Modal & Visual Modes (Theme / A11y / Motion)
+   ========================================================================== */
+.theme-card {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: var(--border-glass) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-card:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: var(--brand-primary) !important;
+  transform: translateY(-2px);
+}
+
+.theme-card.active {
+  background: rgba(99, 102, 241, 0.15) !important;
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.35);
+}
+
+/* Light Theme Mode */
+body.theme-light {
+  --bg-deep: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.94);
+  --bg-card-hover: #ffffff;
+  --bg-sidebar: rgba(241, 245, 249, 0.95);
+  --bg-topbar: rgba(241, 245, 249, 0.92);
+  --bg-input: #ffffff;
+  --text-main: #0f172a;
+  --text-body: #1e293b;
+  --text-sub: #475569;
+  --text-dim: #64748b;
+  --border-glass: rgba(15, 23, 42, 0.12);
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+body.theme-light .glass-card,
+body.theme-light .custom-card,
+body.theme-light .spotlight-card,
+body.theme-light .modal-content {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.theme-light .text-light,
+body.theme-light h1, body.theme-light h2, body.theme-light h3, body.theme-light h4, body.theme-light h5, body.theme-light h6 {
+  color: #0f172a !important;
+}
+
+body.theme-light .brand-title {
+  background: linear-gradient(135deg, #312e81 30%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.theme-light .sidebar-link {
+  color: #475569 !important;
+}
+
+body.theme-light .sidebar-link:hover {
+  background: rgba(99, 102, 241, 0.08) !important;
+  color: #1e293b !important;
+}
+
+body.theme-light .sidebar-link.active {
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0.03) 100%) !important;
+  color: #4338ca !important;
+}
+
+/* Cyber Glow Theme Mode */
+body.theme-cyber {
+  --bg-deep: #030712;
+  --brand-primary: #06b6d4;
+  --shadow-glow: 0 0 30px -5px rgba(6, 182, 212, 0.45);
+}
+
+body.theme-cyber .spotlight-card {
+  border-color: rgba(6, 182, 212, 0.3) !important;
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.15) !important;
+}
+
+/* High Contrast Mode (WCAG AAA) */
+body.high-contrast-mode {
+  --border-glass: rgba(255, 255, 255, 0.4) !important;
+}
+
+body.high-contrast-mode .glass-card,
+body.high-contrast-mode .custom-card,
+body.high-contrast-mode .spotlight-card,
+body.high-contrast-mode .sidebar-link,
+body.high-contrast-mode .btn,
+body.high-contrast-mode .form-control,
+body.high-contrast-mode .form-select {
+  border: 2px solid #ffffff !important;
+  font-weight: 600 !important;
+}
+
+body.high-contrast-mode p,
+body.high-contrast-mode span,
+body.high-contrast-mode .text-muted,
+body.high-contrast-mode .text-secondary {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Reduced Motion Mode (A11y) */
+body.reduced-motion-mode * {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.reduced-motion-mode #getlayersContainer {
+  display: none !important;
+}
+
 /* Print Dossier */
 @media print {
   body {
     background: white !important;
     color: black !important;
   }
-  .app-sidebar, .app-topbar, .btn, .no-print, #margdarshakChatWidget, #getlayersContainer {
+  .app-sidebar, .app-topbar, .btn, .no-print, #margdarshakChatWidget, #getlayersContainer, #settingsModal {
     display: none !important;
   }
   .app-main-wrapper {

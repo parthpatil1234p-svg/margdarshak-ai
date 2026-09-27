@@ -92,6 +92,11 @@
           <i class="fa-solid fa-folder-open text-success"></i>
           <span>Saved Roadmaps</span>
         </button>
+
+        <button type="button" class="sidebar-link" onclick="openSettingsModal()">
+          <i class="fa-solid fa-gear text-primary"></i>
+          <span>Preferences & Settings</span>
+        </button>
       </nav>
 
       <!-- Sidebar Status & Footer -->
@@ -151,6 +156,12 @@
               <li><button class="dropdown-item rounded-2 py-1 small lang-option" data-lang="mr" onclick="setLanguage('mr')">मराठी (Marathi)</button></li>
             </ul>
           </div>
+
+          <!-- Settings Trigger Button -->
+          <button type="button" class="btn btn-outline-light btn-sm rounded-pill px-2 px-sm-3 d-flex align-items-center" onclick="openSettingsModal()" aria-label="Open System Settings" title="System Preferences & Dark Mode">
+            <i class="fa-solid fa-gear me-1 text-primary"></i>
+            <span class="d-none d-sm-inline fw-semibold">Settings</span>
+          </button>
 
           <!-- Auth Account Nav -->
           <div id="authNavContainer"></div>
@@ -1050,6 +1061,160 @@
           <div id="quizQuestionContainer">
             <!-- Injected via aptitudeQuiz.js -->
           </div>
+        </div>
+      </div>
+    </div>
+  <!-- Accessible System Preferences & Settings Modal -->
+  <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content glass-card rounded-4 border-glass shadow-lg">
+        <div class="modal-header border-bottom border-glass px-4 py-3">
+          <div class="d-flex align-items-center gap-2">
+            <div class="bg-primary bg-opacity-25 text-primary p-2 rounded-3 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+              <i class="fa-solid fa-gear fa-lg"></i>
+            </div>
+            <div>
+              <h5 class="modal-title fw-bold mb-0 text-light" id="settingsModalLabel">Preferences & System Settings</h5>
+              <small class="text-muted">Customize theme appearance, AI voice counselor, notifications, and accessibility.</small>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body p-0">
+          <!-- Settings Tabs -->
+          <ul class="nav nav-tabs nav-fill bg-dark bg-opacity-50 border-bottom border-glass px-3 pt-2" id="settingsTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active py-2 fw-semibold text-light" id="settings-theme-tab" data-bs-toggle="tab" data-bs-target="#settings-theme" type="button" role="tab">
+                <i class="fa-solid fa-palette me-1 text-warning"></i>Theme & Display
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link py-2 fw-semibold text-light" id="settings-ai-tab" data-bs-toggle="tab" data-bs-target="#settings-ai" type="button" role="tab">
+                <i class="fa-solid fa-robot me-1 text-info"></i>AI & Voice
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link py-2 fw-semibold text-light" id="settings-alerts-tab" data-bs-toggle="tab" data-bs-target="#settings-alerts" type="button" role="tab">
+                <i class="fa-solid fa-bell me-1 text-success"></i>Alerts & Aid
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link py-2 fw-semibold text-light" id="settings-a11y-tab" data-bs-toggle="tab" data-bs-target="#settings-a11y" type="button" role="tab">
+                <i class="fa-solid fa-universal-access me-1 text-primary"></i>Accessibility
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content p-4" id="settingsTabContent">
+            <!-- 1. Theme Tab -->
+            <div class="tab-pane fade show active" id="settings-theme" role="tabpanel">
+              <div class="mb-4">
+                <label class="form-label fw-bold text-light mb-2">Interface Theme Mode</label>
+                <div class="row g-3">
+                  <div class="col-4">
+                    <div class="theme-card p-3 rounded-3 border text-center cursor-pointer active" id="themeCardOled" onclick="setAppTheme('oled')">
+                      <i class="fa-solid fa-moon text-indigo fa-2x mb-2"></i>
+                      <div class="fw-semibold text-light small">Dark OLED</div>
+                      <span class="badge bg-primary bg-opacity-25 text-primary x-small">Default</span>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="theme-card p-3 rounded-3 border text-center cursor-pointer" id="themeCardCyber" onclick="setAppTheme('cyber')">
+                      <i class="fa-solid fa-wand-magic-sparkles text-cyan fa-2x mb-2"></i>
+                      <div class="fw-semibold text-light small">Cyber Glow</div>
+                      <span class="badge bg-info bg-opacity-25 text-info x-small">Vibrant</span>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="theme-card p-3 rounded-3 border text-center cursor-pointer" id="themeCardLight" onclick="setAppTheme('light')">
+                      <i class="fa-solid fa-sun text-warning fa-2x mb-2"></i>
+                      <div class="fw-semibold text-light small">Light Mode</div>
+                      <span class="badge bg-warning bg-opacity-25 text-warning x-small">Clean</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-dark bg-opacity-40 border border-glass">
+                <div>
+                  <label for="settingLanguageSelect" class="fw-semibold text-light mb-0">Portal & Counseling Language</label>
+                  <div class="small text-muted">Select primary voice & text language</div>
+                </div>
+                <select id="settingLanguageSelect" class="form-select form-select-sm w-auto bg-dark text-light border-glass" onchange="setLanguage(this.value)">
+                  <option value="en">English (US/IN)</option>
+                  <option value="hi">हिंदी (Hindi)</option>
+                  <option value="mr">मराठी (Marathi)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 2. AI & Voice Tab -->
+            <div class="tab-pane fade" id="settings-ai" role="tabpanel">
+              <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-dark bg-opacity-40 border border-glass mb-3">
+                <div>
+                  <div class="fw-semibold text-light">Voice Synthesis & Audio Counsel</div>
+                  <div class="small text-muted">Automatically speaks AI career advice using Web Speech API</div>
+                </div>
+                <div class="form-check form-switch fs-5">
+                  <input class="form-check-input" type="checkbox" id="settingVoiceSwitch" checked onchange="toggleVoiceCounsel(this.checked)">
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-dark bg-opacity-40 border border-glass">
+                <div>
+                  <div class="fw-semibold text-light">Deep Reasoning Engine (Gemini 2.5)</div>
+                  <div class="small text-muted">Enables psychometric RIASEC matching with live cutoffs</div>
+                </div>
+                <div class="form-check form-switch fs-5">
+                  <input class="form-check-input" type="checkbox" id="settingGeminiSwitch" checked disabled>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Alerts & Aid Tab -->
+            <div class="tab-pane fade" id="settings-alerts" role="tabpanel">
+              <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-dark bg-opacity-40 border border-glass mb-3">
+                <div>
+                  <div class="fw-semibold text-light">MahaDBT & NSP Scholarship Deadlines</div>
+                  <div class="small text-muted">Show notification reminders for EBC fee waivers & Saksham grants</div>
+                </div>
+                <div class="form-check form-switch fs-5">
+                  <input class="form-check-input" type="checkbox" id="settingScholarshipSwitch" checked onchange="toggleScholarshipAlerts(this.checked)">
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Accessibility Tab -->
+            <div class="tab-pane fade" id="settings-a11y" role="tabpanel">
+              <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-dark bg-opacity-40 border border-glass mb-3">
+                <div>
+                  <div class="fw-semibold text-light">High Contrast Text & Outlines (WCAG AAA)</div>
+                  <div class="small text-muted">Enhances text weight and borders for maximum legibility</div>
+                </div>
+                <div class="form-check form-switch fs-5">
+                  <input class="form-check-input" type="checkbox" id="settingHighContrastSwitch" onchange="toggleHighContrast(this.checked)">
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-dark bg-opacity-40 border border-glass">
+                <div>
+                  <div class="fw-semibold text-light">Reduced Motion (Disable 3D Gradients)</div>
+                  <div class="small text-muted">Stops background 3D canvas and dynamic kinetic transitions</div>
+                </div>
+                <div class="form-check form-switch fs-5">
+                  <input class="form-check-input" type="checkbox" id="settingReducedMotionSwitch" onchange="toggleReducedMotion(this.checked)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer border-top border-glass px-4 py-3 d-flex justify-content-between">
+          <small class="text-muted">Preferences are saved automatically in your browser.</small>
+          <button type="button" class="btn btn-primary rounded-pill px-4" data-bs-dismiss="modal">
+            <i class="fa-solid fa-check me-1"></i>Done
+          </button>
         </div>
       </div>
     </div>
