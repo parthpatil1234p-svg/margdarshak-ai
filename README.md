@@ -8,6 +8,8 @@
 
 <div align="center">
 
+[![Live Application](https://img.shields.io/badge/Live%20App-margdarshak--ai--six.vercel.app-000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://margdarshak-ai-six.vercel.app/)
+[![Render Backend](https://img.shields.io/badge/Render%20API-Online%20(Gemini%202.5)-46e3b7.svg?style=for-the-badge&logo=render&logoColor=white)](https://margdarshak-ai-backend-auux.onrender.com/api/health)
 [![HackMatrix 5.0](https://img.shields.io/badge/HackMatrix%205.0-Kali%20Yuga%20(PCCOE%20Pune)-ff4500.svg?style=for-the-badge&logo=target)](https://hackmatrix.in)
 [![Track](https://img.shields.io/badge/Track-04%20Miscellaneous%20(MISC--01)-0284c7.svg?style=for-the-badge&logo=compass)](https://github.com/parthpatil1234p-svg/margdarshak-ai)
 [![Verification](https://img.shields.io/badge/Automated%20Tests-18%2F18%20PASSED%20%E2%9C%85-10b981.svg?style=for-the-badge&logo=checkmarx)](#-verification--test-suite)
@@ -16,6 +18,14 @@
 [![License](https://img.shields.io/badge/License-MIT-8b5cf6.svg?style=for-the-badge)](LICENSE)
 
 </div>
+
+---
+
+## 🌐 Live Production Links
+
+- 🚀 **Live Web Portal (Vercel Frontend):** [https://margdarshak-ai-six.vercel.app/](https://margdarshak-ai-six.vercel.app/)
+- ⚡ **Live High-Performance Backend (Render API):** [https://margdarshak-ai-backend-auux.onrender.com/api/health](https://margdarshak-ai-backend-auux.onrender.com/api/health)
+- 📦 **GitHub Repository:** [https://github.com/parthpatil1234p-svg/margdarshak-ai](https://github.com/parthpatil1234p-svg/margdarshak-ai)
 
 ---
 
@@ -103,6 +113,10 @@ Every year, over **2.5 Crore Indian students** complete Class 10 and face irreve
 |  5. DECISION MATRIX    6. VOICE COUNSELOR AI   7. SAVED ROADMAPS      8. ZERO-FAILURE FALLBACK   |
 |  • Side-by-Side Trade  • Multilingual Chat     • MongoDB Cloud Sync   • Deterministic Heuristic  |
 |  • 1-Click PDF Dossier • मराठी • हिंदी • Eng   • Snapshot Retrieval   • 100% Offline Uptime      |
+|                                                                                                  |
+|  9. COMMAND PALETTE    10. WORKFLOW STEPPER    11. MULTI-THEME ENGINE 12. 21ST.DEV MICRO-UI      |
+|  • Ctrl+K Quick Search • Dynamic 5-Step Path   • OLED / Cyber / Light • Particle Buttons & Cards |
+|  • Instant Jump/Action • Next Action Prompter  • WCAG AAA High A11y   • Slide-over Deep Drawer   |
 +--------------------------------------------------------------------------------------------------+
 ```
 
@@ -140,9 +154,17 @@ Dynamic contingency modeling that eliminates repeat drop years and saves million
 - **1-Click Export:** Generates an official, verifiable **Career Dossier PDF** with roadmap milestones and transparent assumptions.
 
 ### 6. 🤖 Multilingual Voice AI Counselor
-- Conversational counselor powered by **Google Gemini API** (`gemini-2.5-flash`).
+- Conversational counselor powered by **Google Gemini API** (`gemini-2.5-flash` / `gemini-1.5-flash`).
 - Speaks and listens in **Marathi (मराठी)**, **Hindi (हिंदी)**, and **English** with speech-to-text mic integration.
 - **Zero-Failure Dual Engine:** Deterministic heuristic fallback engine guarantees 100% demo uptime under firewalled or offline hackathon network environments.
+
+### 7. ✨ Advanced UX Suite & Micro-Interactions (21st.dev & Vengeance UI)
+- **⌨️ Command Palette (`Ctrl+K` / `⌘K`):** Global keyboard shortcut and topbar search bar for instant jumping across career streams, tools, personas, and themes.
+- **🧭 Decision Journey Stepper:** Interactive 5-step workflow tracker with next-step recommendations and checkmark completions.
+- **🔔 Glassmorphic Toast Notifications:** Non-intrusive floating feedback on milestone triggers, savings alerts, and persona switches.
+- **🔍 Milestone Deep-Dive Drawer:** Slide-over inspection drawer for detailed entrance exam criteria, required skills, salary curves, and NEP 2020 exit options.
+- **🎨 3-Tier Multi-Theme System:** Dark OLED (Default), Cyber Glow (Vibrant Cyan), and Clean Light Mode with WCAG AAA high-contrast support.
+- **💥 Particle Burst Interaction:** 21st.dev kinetic particle physics on primary CTA and simulation buttons.
 
 ---
 
@@ -152,7 +174,8 @@ Dynamic contingency modeling that eliminates repeat drop years and saves million
                                ┌─────────────────────────────────────────┐
                                │       Client Web Application (SPA)      │
                                │  HTML5 • CSS3 • ES6+ • Bootstrap 5.3    │
-                               │  Chart.js • html2pdf • Responsive Canvas│
+                               │  Chart.js • html2pdf • Vengeance UI     │
+                               │  21st.dev Particles • GetLayers 3D      │
                                └────────────────────┬────────────────────┘
                                                     │ HTTPS / JSON REST API
                                                     ▼
@@ -162,7 +185,8 @@ Dynamic contingency modeling that eliminates repeat drop years and saves million
                                │  ├─ Multi-Pathway Simulator Service     │
                                │  ├─ Dynamic What-If Contingency Engine  │
                                │  ├─ Loan ROI & Feasibility Calculator   │
-                               │  └─ Multilingual AI Chat Controller     │
+                               │  ├─ Multilingual AI Chat Controller     │
+                               │  └─ Auth & Saved Roadmaps Controller    │
                                └──────────────┬───────────────────┬──────┘
                                               │                   │
                      ┌────────────────────────┴────────┐ ┌────────┴────────────────────────┐
@@ -179,10 +203,11 @@ Dynamic contingency modeling that eliminates repeat drop years and saves million
 
 | Layer | Technologies Used | Rationale |
 |:---|:---|:---|
-| **Frontend** | Vanilla JavaScript (ES6+), HTML5, CSS3, Bootstrap 5.3, Chart.js, FontAwesome 6 | Zero-build overhead, sub-millisecond DOM rendering, 100% lightweight client. |
+| **Frontend** | Vanilla JavaScript (ES6+), HTML5, CSS3, Bootstrap 5.3, Chart.js, FontAwesome 6, 21st.dev Micro-UI | Zero-build overhead, sub-millisecond DOM rendering, 100% lightweight client. |
 | **Backend** | Node.js (v18+), Express.js, Helmet Security, CORS, Dotenv | Asynchronous high-throughput REST API with sub-80ms response times. |
 | **Database** | MongoDB / Mongoose with High-Speed In-Memory JSON Fallback | Resilient document store with guaranteed offline-first continuity. |
-| **AI Reasoning** | Google Gemini API (`gemini-2.5-flash`) + Deterministic Heuristic Engine | Structured JSON reasoning combined with a zero-failure offline fallback. |
+| **AI Reasoning** | Google Gemini API (`gemini-2.5-flash` / `gemini-1.5-flash`) + Deterministic Heuristic Engine | Structured JSON reasoning combined with a zero-failure offline fallback. |
+| **Deployment** | Vercel (Edge Frontend Proxy) + Render (Node.js API Daemon) | Global CDN distribution with automatic CI/CD git synchronization. |
 | **Testing** | Automated Native Test Suite (`node test/api.test.js`, `auth.test.js`, `chat.test.js`) | 18/18 comprehensive endpoint and security assertion tests. |
 
 ---
@@ -213,7 +238,7 @@ npm test
 node test/auth.test.js
 node test/chat.test.js
 
-# 5. Start the production web server
+# 5. Start the local server
 npm start
 ```
 
