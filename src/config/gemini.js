@@ -6,9 +6,26 @@
 
 const getGeminiAPIKey = () => process.env.GEMINI_API_KEY || '';
 
+let geminiConnectionState = 'unverified';
+let activeGeminiModel = null;
+
 const isGeminiAvailable = () => {
   const key = getGeminiAPIKey();
   return Boolean(key && key.trim().length > 10 && !key.includes('YOUR_API_KEY'));
+};
+
+const getGeminiStatus = () => {
+  const configured = isGeminiAvailable();
+  if (!configured) {
+    return { configured: false, connected: false, state: 'fallback', model: null };
+  }
+
+  return {
+    configured: true,
+    connected: geminiConnectionState === 'connected',
+    state: geminiConnectionState,
+    model: activeGeminiModel
+  };
 };
 
 /**
@@ -23,11 +40,12 @@ const generateJSONWithGemini = async (prompt, systemInstruction = '') => {
   }
 
   const apiKey = getGeminiAPIKey();
-  const models = ['gemini-2.0-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-flash-002', 'gemini-1.5-flash', 'gemini-2.5-flash'];
+  const models = ['gemini-3.8-flash', 'gemini-3.5-flash-lite', 'gemini-3.5-flash'];
+  let usableResponseReceived = false;
 
   for (const model of models) {
     try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
       const payload = {
         contents: [
           {
@@ -50,24 +68,43 @@ const generateJSONWithGemini = async (prompt, systemInstruction = '') => {
 
       const response = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': apiKey
+        },
         body: JSON.stringify(payload)
       });
 
       if (!response.ok) {
-        const errText = await response.text();
-        console.warn(`[Gemini API] Model ${model} returned ${response.status}: ${errText.slice(0, 150)}`);
+        const apiError = await response.json().catch(() => null);
+        const rawProviderMessage = apiError?.error?.message;
+        const providerMessage = typeof rawProviderMessage === 'string'
+          ? rawProviderMessage.replace(/[\r\n]+/g, ' ').slice(0, 160)
+          : null;
+        const providerStatus = apiError?.error?.status;
+        console.warn(`[Gemini API] Model ${model} returned HTTP ${response.status}${providerStatus ? ` (${providerStatus})` : ''}${providerMessage ? `: ${providerMessage}` : '.'}`);
         continue; // Try next model or fallback
       }
 
       const data = await response.json();
       const textOutput = data?.candidates?.[0]?.content?.parts?.[0]?.text;
       if (textOutput) {
-        return JSON.parse(textOutput);
+        const parsedOutput = JSON.parse(textOutput);
+        if (parsedOutput && typeof parsedOutput === 'object' && !Array.isArray(parsedOutput)) {
+          usableResponseReceived = true;
+          geminiConnectionState = 'connected';
+          activeGeminiModel = model;
+          return parsedOutput;
+        }
       }
     } catch (err) {
-      console.warn(`[Gemini Client Warning] Attempt with ${model} failed: ${err.message}`);
+      console.warn(`[Gemini Client Warning] Attempt with ${model} failed (${err.name || 'Error'}).`);
     }
+  }
+
+  if (!usableResponseReceived) {
+    geminiConnectionState = 'unavailable';
+    activeGeminiModel = null;
   }
 
   return null;
@@ -76,5 +113,6 @@ const generateJSONWithGemini = async (prompt, systemInstruction = '') => {
 module.exports = {
   getGeminiAPIKey,
   isGeminiAvailable,
+  getGeminiStatus,
   generateJSONWithGemini
 };

@@ -14,7 +14,7 @@
   // State
   let soundEnabled = true;
   let activeStep = 1;
-  const completedSteps = new Set([1]);
+  const completedSteps = new Set();
 
   // Audio Synth Synthesizer for subtle haptic feedback
   let audioCtx = null;
@@ -176,7 +176,6 @@
     const step = STEPS_DATA.find(s => s.id === stepNumber);
     if (step) {
       activeStep = stepNumber;
-      completedSteps.add(stepNumber);
       const tabEl = document.getElementById(step.tabId);
       if (tabEl) tabEl.click();
       renderWorkflowStepper();
@@ -196,10 +195,6 @@
 
   function markStepComplete(stepNumber) {
     completedSteps.add(stepNumber);
-    if (stepNumber < 5 && activeStep === stepNumber) {
-      activeStep = stepNumber + 1;
-      completedSteps.add(activeStep);
-    }
     renderWorkflowStepper();
     playUiSound('success');
   }
@@ -516,6 +511,14 @@
   document.addEventListener('DOMContentLoaded', () => {
     createCommandPaletteModal();
     renderWorkflowStepper();
+
+    STEPS_DATA.forEach((step) => {
+      const tabEl = document.getElementById(step.tabId);
+      tabEl?.addEventListener('shown.bs.tab', () => {
+        activeStep = step.id;
+        renderWorkflowStepper();
+      });
+    });
   });
 
   // Export to window

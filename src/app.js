@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
 const { getDBStatus } = require('./config/db');
-const { isGeminiAvailable } = require('./config/gemini');
+const { getGeminiStatus } = require('./config/gemini');
 
 // Import Route Handlers
 const assessmentRoutes = require('./routes/assessmentRoutes');
@@ -53,7 +53,7 @@ app.use('/api/matrix', matrixRoutes);
 // Health and System Diagnostic endpoint
 app.get('/api/health', (req, res) => {
   const dbStatus = getDBStatus();
-  const geminiLive = isGeminiAvailable();
+  const geminiStatus = getGeminiStatus();
 
   res.status(200).json({
     status: 'online',
@@ -65,9 +65,17 @@ app.get('/api/health', (req, res) => {
     systemTime: new Date().toISOString(),
     database: dbStatus,
     aiEngine: {
-      geminiLive,
-      model: geminiLive ? 'gemini-1.5-flash / gemini-2.5-flash' : 'Deterministic Heuristic Fallback Engine (Offline Mode Active)',
-      status: geminiLive ? 'Connected to Google Cloud' : 'Ready (Zero-Failure Fallback Enabled)'
+      geminiConfigured: geminiStatus.configured,
+      geminiLive: geminiStatus.connected,
+      state: geminiStatus.state,
+      model: geminiStatus.model || (geminiStatus.configured ? 'Google Gemini (connection unverified)' : 'Deterministic Heuristic Fallback Engine'),
+      status: geminiStatus.state === 'connected'
+        ? 'Connected to Google Cloud'
+        : geminiStatus.state === 'unavailable'
+          ? 'Gemini unavailable; offline fallback active'
+          : geminiStatus.state === 'unverified'
+            ? 'Gemini configured; connection not verified'
+            : 'Offline fallback active'
     }
   });
 });

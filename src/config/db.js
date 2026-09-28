@@ -19,7 +19,8 @@ const connectDB = async () => {
     isConnected = true;
     console.log(`[MongoDB] Connected successfully to: ${conn.connection.host}`);
   } catch (error) {
-    console.warn(`[MongoDB Warning] Could not connect to MongoDB at ${mongoURI} (${error.message}).`);
+    const errorCode = error.code || error.name || 'connection error';
+    console.warn(`[MongoDB Warning] Could not connect to the configured database (${errorCode}).`);
     console.warn('[MongoDB Mode] Gracefully falling back to High-Speed In-Memory & JSON Data Store. All features remain fully operational!');
     isConnected = false;
     try {

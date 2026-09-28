@@ -36,8 +36,8 @@ const renderChatbotUI = () => {
           </div>
           <div>
             <div class="fw-bold text-white small mb-0">MargDarshak AI Counselor</div>
-            <span class="badge bg-success-subtle text-success small" style="font-size: 0.65rem;">
-              <i class="fa-solid fa-circle text-success me-1 small"></i>Live AI Online
+            <span class="badge bg-info-subtle text-info small" style="font-size: 0.65rem;">
+              <i class="fa-solid fa-circle text-secondary me-1 small" id="aiChatStatusDot"></i><span id="aiChatStatusText">Checking AI...</span>
             </span>
           </div>
         </div>
@@ -138,6 +138,7 @@ const handleChatSubmit = async (e) => {
     });
     const data = await res.json();
     removeTypingIndicator(typingId);
+    window.refreshAIEngineStatus?.();
 
     if (data.success && data.reply) {
       appendMessage('bot', data.reply, data.source);

@@ -33,7 +33,7 @@ Provide an objective, empathetic evaluation in this exact JSON schema:
     if (aiResult && aiResult.executiveCounselorSummary) {
       return {
         ...aiResult,
-        source: 'Google Gemini 1.5 Flash (Live AI Reasoning)'
+        source: 'Google Gemini (Live AI Reasoning)'
       };
     }
   }

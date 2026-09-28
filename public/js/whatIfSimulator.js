@@ -79,6 +79,7 @@ const runWhatIfScenario = async (scenarioId, clickedBtn = null) => {
       if (typeof window.markStepComplete === 'function') {
         window.markStepComplete(3);
       }
+      window.refreshAIEngineStatus?.();
       if (typeof window.showToast === 'function') {
         const savedINR = data.differential?.costDeltaINR ? Math.abs(data.differential.costDeltaINR) : 8000000;
         window.showToast('What-If Pivot Computed', `Modeled pivot saving ₹${(savedINR/100000).toFixed(0)} Lakhs and 0 drop years!`, 'fa-shuffle', 'info');
@@ -169,11 +170,11 @@ const renderWhatIfResults = (data) => {
   if (pivotMapContainer && pivotedPathway) {
     pivotMapContainer.innerHTML = `
       <div class="custom-card spotlight-card p-4 border-info">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <span class="badge bg-info text-white fw-bold px-3 py-2 rounded-pill">
+        <div class="pivot-roadmap-header mb-3">
+          <span class="badge bg-info text-white fw-bold px-3 py-2 rounded-pill pivot-pathway-name">
             <i class="fa-solid fa-route me-1"></i>Pivoted Pathway: ${pivotedPathway.pathwayName}
           </span>
-          <span class="fw-bold text-success">
+          <span class="fw-bold text-success pivot-pathway-salary">
             Starting Salary: ₹${((pivotedPathway.targetCareer?.medianSalaryINR || 0) / 100000).toFixed(1)} LPA
           </span>
         </div>

@@ -73,7 +73,7 @@ Return JSON with this schema:
 {
   "reply": "Your detailed counseling answer in ${lang === 'mr' ? 'Marathi' : lang === 'hi' ? 'Hindi' : 'English'}",
   "suggestedFollowUps": ["Follow up question 1", "Follow up question 2"],
-  "source": "Google Gemini 1.5 Flash (Live AI Counselor)"
+  "source": "Google Gemini (Live AI Counselor)"
 }
 `;
 
@@ -83,7 +83,7 @@ Return JSON with this schema:
           success: true,
           reply: aiData.reply,
           suggestedFollowUps: aiData.suggestedFollowUps || [],
-          source: 'Google Gemini 1.5 Flash (Live AI Counselor)',
+          source: 'Google Gemini (Live AI Counselor)',
           language: lang
         });
       }

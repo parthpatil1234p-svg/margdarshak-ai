@@ -103,8 +103,8 @@
       <div class="sidebar-footer">
         <div class="system-status-chip">
           <div class="d-flex align-items-center gap-2">
-            <span class="badge-status-dot bg-success"></span>
-            <span class="text-light fw-medium">Gemini 2.5 Active</span>
+            <span class="badge-status-dot bg-secondary" id="aiEngineStatusDot"></span>
+            <span class="text-light fw-medium" id="aiEngineStatusText" title="Checking AI service status">Checking AI...</span>
           </div>
           <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-25">PCCOE</span>
         </div>
@@ -1183,8 +1183,8 @@
 
               <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-dark bg-opacity-40 border border-glass">
                 <div>
-                  <div class="fw-semibold text-light">Deep Reasoning Engine (Gemini 2.5)</div>
-                  <div class="small text-muted">Enables psychometric RIASEC matching with live cutoffs</div>
+                  <div class="fw-semibold text-light">AI Reasoning & Career Matching</div>
+                  <div class="small text-muted">Live AI is used when available; offline guidance remains ready.</div>
                 </div>
                 <div class="form-check form-switch fs-5">
                   <input class="form-check-input" type="checkbox" id="settingGeminiSwitch" checked disabled>

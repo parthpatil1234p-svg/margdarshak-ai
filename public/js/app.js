@@ -7,6 +7,62 @@ window.currentStudentProfile = null;
 window.currentPathways = [];
 window.counselingData = null;
 
+const renderAIEngineStatus = (engine = {}) => {
+  const configured = Boolean(engine.geminiConfigured);
+  const state = engine.state || (configured ? 'unverified' : 'fallback');
+  const status = {
+    connected: {
+      label: 'Gemini Online',
+      detail: `${engine.model || 'Gemini'} responded successfully; offline fallback remains available.`,
+      color: 'success'
+    },
+    unavailable: {
+      label: 'Offline Fallback Active',
+      detail: 'Gemini did not respond; the built-in offline guidance is active.',
+      color: 'warning'
+    },
+    unverified: {
+      label: 'Gemini Connection Unverified',
+      detail: 'Gemini is configured but has not successfully responded yet.',
+      color: 'info'
+    },
+    fallback: {
+      label: 'Offline AI Ready',
+      detail: 'Gemini is not configured; built-in offline guidance is ready.',
+      color: 'info'
+    }
+  }[state] || {
+    label: 'AI Status Unavailable',
+    detail: 'Could not retrieve AI status; replies may use offline guidance.',
+    color: 'secondary'
+  };
+
+  ['aiEngineStatusText', 'aiChatStatusText'].forEach((id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.textContent = status.label;
+      element.title = status.detail;
+    }
+  });
+
+  const sidebarDot = document.getElementById('aiEngineStatusDot');
+  if (sidebarDot) sidebarDot.className = `badge-status-dot bg-${status.color}`;
+
+  const chatDot = document.getElementById('aiChatStatusDot');
+  if (chatDot) chatDot.className = `fa-solid fa-circle text-${status.color} me-1 small`;
+};
+
+window.refreshAIEngineStatus = async () => {
+  try {
+    const response = await fetch('/api/health', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Status request failed (${response.status})`);
+    const data = await response.json();
+    renderAIEngineStatus(data.aiEngine);
+  } catch (_) {
+    renderAIEngineStatus({ state: 'unknown' });
+  }
+};
+
 // Preset Personas for 1-click Hackathon Demonstrations
 const DEMO_PERSONAS = {
   PERSONA_A: {
@@ -55,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyStoredSettings();
   if (typeof initWhatIfScenarios === 'function') initWhatIfScenarios();
   if (typeof initLoanCalculator === 'function') initLoanCalculator();
+  window.refreshAIEngineStatus?.();
 
   // Setup form submission handler
   const intakeForm = document.getElementById('intakeAssessmentForm');
@@ -82,6 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const title = e.target.getAttribute('data-section-title') || e.target.innerText.trim();
       if (breadcrumbTitle) breadcrumbTitle.textContent = title;
+
+      const isContentHeavyView = ['pills-whatif-tab', 'pills-matrix-tab'].includes(e.target.id);
+      document.body.classList.toggle('content-heavy-view-active', isContentHeavyView);
+      if (isContentHeavyView) document.getElementById('chatWindow')?.classList.add('d-none');
 
       // Close mobile drawer if open
       if (window.innerWidth < 992 && sidebar && sidebar.classList.contains('show')) {
@@ -223,6 +284,7 @@ const simulateCareerRoadmap = async (profile) => {
 
       // Trigger UX enhancements
       if (typeof window.markStepComplete === 'function') {
+        window.markStepComplete(1);
         window.markStepComplete(2);
       }
       if (typeof window.showToast === 'function') {
@@ -248,6 +310,7 @@ const simulateCareerRoadmap = async (profile) => {
         const bsTab = new bootstrap.Tab(roadmapTab);
         bsTab.show();
       }
+      window.refreshAIEngineStatus?.();
     }
   } catch (err) {
     console.error('[Simulation Error]', err);
